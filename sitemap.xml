@@ -5,7 +5,7 @@
     
     <url>
     
-      <loc>http://harshanagarajan.com/post/</loc>
+      <loc>/post/</loc>
       <lastmod>2017-01-01T00:00:00-07:00</lastmod>
     </url>
     
@@ -14,7 +14,7 @@
     
     <url>
     
-      <loc>http://harshanagarajan.com/publication/</loc>
+      <loc>/publication/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -23,7 +23,7 @@
     
     <url>
     
-      <loc>http://harshanagarajan.com/talk/</loc>
+      <loc>/talk/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -32,7 +32,7 @@
     
     <url>
     
-      <loc>http://harshanagarajan.com/</loc>
+      <loc>/</loc>
       <lastmod>2016-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -42,7 +42,7 @@
     
     <url>
     
-      <loc>http://harshanagarajan.com/categories/</loc>
+      <loc>/categories/</loc>
       <priority>0</priority>
     </url>
     
@@ -51,7 +51,7 @@
     
     <url>
     
-      <loc>http://harshanagarajan.com/publication_types/</loc>
+      <loc>/publication_types/</loc>
       <priority>0</priority>
     </url>
     
@@ -60,7 +60,7 @@
     
     <url>
     
-      <loc>http://harshanagarajan.com/tags/</loc>
+      <loc>/tags/</loc>
       <priority>0</priority>
     </url>
     
