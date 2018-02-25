@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Homes on Harsha&#39;s Webpage</title>
+    <title>Homes on Harsha&#39;s Homepage</title>
     <link>/home/</link>
-    <description>Recent content in Homes on Harsha&#39;s Webpage</description>
+    <description>Recent content in Homes on Harsha&#39;s Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -18,7 +18,7 @@
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/home/about/</guid>
-      <description>Biography I am currently staff scientist at the &amp;ldquo;Applied Mathematics and Plasma Physics&amp;rdquo; division in Los Alamos National Laboratory (LANL). My primary research interests include development of efficient formulations and algorithms for modeling, design and control of complex physical systems. Particularly, I utilize tools from a myriad of disciplines including, mathematical programming and optimization (convex and nonconvex), control theory and uncertainty quantification. In recent years, at LANL, I have been focussing on various intersting problems arising in large-scale energy infrastructure systems.</description>
+      <description>Biography I am currently staff scientist at the &amp;ldquo;Applied Mathematics and Plasma Physics&amp;rdquo; division in Los Alamos National Laboratory (LANL). My primary research interests include development of efficient formulations and algorithms for modeling, design and control of complex physical systems. Particularly, I utilize tools from a myriad of disciplines including, mathematical programming and optimization (convex and nonconvex), control theory and uncertainty quantification. In recent years, at LANL, I have been focussing on various interesting problems arising in large-scale energy infrastructure systems.</description>
     </item>
     
     <item>
@@ -36,7 +36,9 @@
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>/home/publications/</guid>
-      <description></description>
+      <description>2018  An Adaptive, Multivariate Partitioning Algorithm for Global Optimization of Nonconvex Programs [Arxiv] H. Nagarajan, M. Lu, S. Wang, R. Bent, K. Sundar Journal of Global Optimization (Under review)
+ Probabilistic N-k failure-identification for power systems [Arxiv] [Online] K. Sundar, C. Coffrin, H. Nagarajan, R. Bent Networks, Wiley Online Library
+ Communication-Constrained Expansion Planning for Resilient Distribution Systems [Arxiv] G. Byeon, P.V. Hentenryck, R. Bent, H. Nagarajan INFORMS Journal on Computing (Under Review)</description>
     </item>
     
     <item>
@@ -49,12 +51,23 @@
     </item>
     
     <item>
-      <title>Recent Posts</title>
+      <title>Collaborations</title>
       <link>/home/posts/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/home/posts/</guid>
-      <description></description>
+      <description>In the challenging world of Science and Engineering with increasingly complex problems, collaborative research is the key to success. I have been fortunate to have collaborated with excellent mentors and researchers over the years. Below is the list:
+   Name Institution Topic     Swaroop Darbha TAMU Synthesis of Robust UAV networks, Control Theory   Sivakumar Rathinam TAMU Synthesis of Robust UAV networks, Approximation Algorithms   K.</description>
+    </item>
+    
+    <item>
+      <title>Softwares</title>
+      <link>/home/software/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/home/software/</guid>
+      <description>POD - An Open-source Global MINLP Solver &amp;ldquo;Polyhedral Outer-Approximation and dynamic Discretization (POD)&amp;rdquo; is a novel global optimization solver that uses an adaptive convexification scheme and constraint programming methods to solve Mixed-Integer Non-Linear Programs (non-convex MINLPs) efficiently. Unlike many other state-of-the-art MINLP solvers, POD is entirely built on JuMP in Julia, which provides incredible flexibility for usage and further development.
+ Github link: https://github.com/lanl-ansi/POD.jl Technical papers underlying POD: Paper 1, Paper 2 Applications of POD: Gas Network Optimization, Optimal Power flow  We would like to thank LANL for funding this project under the auspices of Laboratory Directed Research &amp;amp; Development - Exploratory Research (2017-2019).</description>
     </item>
     
     <item>
