@@ -66,8 +66,8 @@
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/home/software/</guid>
-      <description>POD - An Open-source Global MINLP Solver &amp;ldquo;Polyhedral Outer-Approximation and dynamic Discretization (POD)&amp;rdquo; is a novel global optimization solver that uses an adaptive convexification scheme and constraint programming methods to solve Mixed-Integer Non-Linear Programs (non-convex MINLPs) efficiently. Unlike many other state-of-the-art MINLP solvers, POD is entirely built on JuMP in Julia, which provides incredible flexibility for usage and further development.
- Github link: https://github.com/lanl-ansi/POD.jl Technical papers underlying POD: Paper 1, Paper 2 Applications of POD: Gas Network Optimization, Optimal Power flow  We would like to thank LANL for funding this project under the auspices of Laboratory Directed Research &amp;amp; Development - Exploratory Research (2017-2019).</description>
+      <description>POD - An Open-source Global MINLP Solver &amp;ldquo;POD = Piecewise convex relaxation (P) + Outer-approximation (O) + Dynamic discretization (D)&amp;rdquo; is a novel global optimization solver that uses an adaptive convexification scheme and constraint programming methods to solve Mixed-Integer Non-Linear Programs (non-convex MINLPs) efficiently. Unlike many other state-of-the-art MINLP solvers, POD is entirely built on JuMP in Julia, which provides incredible flexibility for usage and further development.
+ Github link: https://github.</description>
     </item>
     
     <item>
