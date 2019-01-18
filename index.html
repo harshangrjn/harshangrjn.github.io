@@ -769,15 +769,15 @@ Below is the list:</p>
   <div class="col-xs-12 col-md-8">
     
 
-<h2 id="pod-an-open-source-global-minlp-solver"><strong>POD</strong> - An Open-source Global MINLP Solver</h2>
+<h2 id="alpine-an-open-source-global-minlp-solver"><strong>Alpine</strong> - An Open-source Global MINLP Solver</h2>
 
-<p>&ldquo;POD = Piecewise convex relaxation (P) + Outer-approximation (O) + Dynamic discretization (D)&rdquo; is a novel global optimization solver that uses an adaptive convexification scheme and constraint programming methods to solve Mixed-Integer Non-Linear Programs (non-convex MINLPs) efficiently. Unlike many other state-of-the-art MINLP solvers, POD is entirely built on <a href="https://github.com/juliaopt/jump.jl" target="_blank">JuMP</a> in <a href="https://julialang.org" target="_blank">Julia</a>, which provides incredible flexibility for usage and further development.</p>
+<p>Alpine.jl is a novel global optimization solver that uses an adaptive, piecewise convexification scheme and constraint programming methods to solve Mixed-Integer Non-Linear Programs (non-convex MINLPs) efficiently. Unlike many other state-of-the-art MINLP solvers, Alpine is entirely built on <a href="https://github.com/juliaopt/jump.jl" target="_blank">JuMP</a> in <a href="https://julialang.org" target="_blank">Julia</a>, which provides incredible flexibility for usage and further development.</p>
 
 <ul>
-<li>Github link: <a href="https://github.com/lanl-ansi/POD.jl" target="_blank"><code>https://github.com/lanl-ansi/POD.jl</code></a></li>
-<li>Technical papers underlying POD: <a href="https://arxiv.org/abs/1707.02514" target="_blank">Paper 1</a>, <a href="https://doi.org/10.1007/978-3-319-44953-1_24" target="_blank">Paper 2</a>, <a href="https://arxiv.org/abs/1807.11007" target="_blank">Paper 3</a></li>
-<li>Applications of POD: <a href="https://doi.org/10.23919/ACC.2017.7963683" target="_blank">Gas Network Optimization</a>, <a href="https://arxiv.org/abs/1803.04633" target="_blank">Optimal Power flow</a></li>
-<li>Presentation on POD at the <a href="http://www.juliaopt.org/meetings/bordeaux2018/" target="_blank">2nd Annual JuMP-dev Workshop</a>, held at the Institut de Mathématiques de Bordeaux, FR, June 2018. 
+<li>Github link: <a href="https://github.com/lanl-ansi/Alpine.jl" target="_blank"><code>https://github.com/lanl-ansi/Alpine.jl</code></a></li>
+<li>Technical papers underlying Alpine: <a href="https://doi.org/10.1007/s10898-018-00734-1" target="_blank">Paper 1</a>, <a href="https://doi.org/10.1007/978-3-319-44953-1_24" target="_blank">Paper 2</a>, <a href="https://arxiv.org/abs/1807.11007" target="_blank">Paper 3</a></li>
+<li>Applications of Alpine: <a href="https://doi.org/10.23919/ACC.2017.7963683" target="_blank">Gas Network Optimization</a>, <a href="https://arxiv.org/abs/1803.04633" target="_blank">Optimal Power flow</a></li>
+<li>Presentation on Alpine at the <a href="http://www.juliaopt.org/meetings/bordeaux2018/" target="_blank">2nd Annual JuMP-dev Workshop</a>, held at the Institut de Mathématiques de Bordeaux, FR, June 2018. 
 <div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
   <iframe src="//www.youtube.com/embed/mwkhiEIS5JA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
  </div>
@@ -788,10 +788,14 @@ Below is the list:</p>
 
 <h2 id="other-useful-softwares">Other useful softwares</h2>
 
-<ul>
-<li><p><a href="https://github.com/lanl-ansi/MINLPLibJuMP.jl" target="_blank">MINLPLibJuMP.jl</a>: If you are a <a href="https://julialang.org" target="_blank">Julia</a>/<a href="https://github.com/juliaopt/jump.jl" target="_blank">JuMP</a> user and looking to benchmark your algorithm on hundreds of standard MINLPs without worrying about instances being in GAMS/AMPL format, then MINLPLibJuMP.jl will be very useful.</p></li>
+<!---
+* [MINLPLibJuMP.jl](https://github.com/lanl-ansi/MINLPLibJuMP.jl): If you are a [Julia](https://julialang.org)/[JuMP](https://github.com/juliaopt/jump.jl) user and looking to benchmark your algorithm on hundreds of standard MINLPs without worrying about instances being in GAMS/AMPL format, then MINLPLibJuMP.jl will be very useful. 
+-->
 
+<ul>
 <li><p><a href="https://github.com/JuliaOpt/Pajarito.jl" target="_blank">Pajarito.jl</a>: A state-of-the-art mixed-integer convex programming solver package written in <a href="https://julialang.org" target="_blank">Julia</a>. And, if you are wondering what <a href="https://github.com/JuliaOpt/Pajarito.jl" target="_blank">Pajarito.jl</a> was named after, check out this <a href="https://en.wikipedia.org/wiki/Pajarito_Mountain_Ski_Area" target="_blank">link</a>.</p></li>
+
+<li><p><a href="https://github.com/lanl-ansi/PowerModels.jl" target="_blank">PowerModels.jl</a>:  A Julia/JuMP package for Steady-State Power Network Optimization.</p></li>
 </ul>
 
   </div>
