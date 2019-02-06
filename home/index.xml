@@ -68,7 +68,7 @@ My primary research interests include development of efficient formulations and 
       
       <guid>/home/software/</guid>
       <description>Alpine - An Open-source Global MINLP Solver Alpine.jl is a novel global optimization solver that uses an adaptive, piecewise convexification scheme and constraint programming methods to solve Mixed-Integer Non-Linear Programs (non-convex MINLPs) efficiently. Unlike many other state-of-the-art MINLP solvers, Alpine is entirely built on JuMP in Julia, which provides incredible flexibility for usage and further development.
- Github link: https://github.com/lanl-ansi/Alpine.jl Technical papers underlying Alpine: Paper 1, Paper 2, Paper 3, [[poster](harshangrjn.</description>
+ Github link: https://github.com/lanl-ansi/Alpine.jl Technical papers underlying Alpine: Paper 1, Paper 2, Paper 3, [poster] Applications of Alpine: Gas Network Optimization, Optimal Power flow Presentation on Alpine at the 2nd Annual JuMP-dev Workshop, held at the Institut de Mathématiques de Bordeaux, FR, June 2018.</description>
     </item>
     
     <item>
