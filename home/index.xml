@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Harsha&#39;s Homepage</title>
@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
     
@@ -37,10 +37,9 @@ My primary research interests include development of efficient formulations and 
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>/home/publications/</guid>
-      <description>2020  Generalized Convex Hull Pricing for the AC Optimal Power Flow Problem [online] M. Garcia, H. Nagarajan, R. Baldick IEEE Transactions on Control of Network Systems
- Algorithms for Mitigating the Effect of Uncertain Geomagnetic Disturbances in Electric Grids M. Ryu, H. Nagarajan, R. Bent
-Power Systems Computation Conference (PSCC), Porto, Portugal
- Optimal Power Flow in Distribution Networks under Stochastic N − 1 Disruptions [arXiv] H. Yang, H.</description>
+      <description>2020   Generalized Convex Hull Pricing for the AC Optimal Power Flow Problem [online] M. Garcia, H. Nagarajan, R. Baldick IEEE Transactions on Control of Network Systems
+  Algorithms for Mitigating the Effect of Uncertain Geomagnetic Disturbances in Electric Grids [arXiv] [online] M. Ryu, H. Nagarajan, R. BentElectric Power Systems Research Presented at 21st Power Systems Computation Conference (PSCC), Porto, Portugal
+  Optimal Power Flow in Distribution Networks under Stochastic N − 1 Disruptions [arXiv] [online] H.</description>
     </item>
     
     <item>
