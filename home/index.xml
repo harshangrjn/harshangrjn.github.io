@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Harsha&#39;s Homepage</title>
@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
     
@@ -37,8 +37,8 @@ My primary research interests include development of efficient formulations and 
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
       
       <guid>/home/publications/</guid>
-      <description>2021  Piecewise Polyhedral Formulations for a Multilinear Term [online] [arXiv] K. Sundar, H. Nagarajan, J. Linderoth, S. Wang, R. Bent Operations Research Letters  2020  Preliminary Design Process for Networked Microgrids [online] K.P. Schneider, H. Nagarajan, A. Pratt, M.J. Reno, B. Ollis, F. Tuffner, S.P. Nandanoori, S. Kundu, W. Du, H. Hijazi, and R. Jain.
- Generalized Convex Hull Pricing for the AC Optimal Power Flow Problem [online] M.</description>
+      <description>2021  Piecewise Polyhedral Formulations for a Multilinear Term [online] [arXiv] K. Sundar, H. Nagarajan, J. Linderoth, S. Wang, R. Bent Operations Research Letters  2020   Preliminary Design Process for Networked Microgrids [online] K.P. Schneider, H. Nagarajan, A. Pratt, M.J. Reno, B. Ollis, F. Tuffner, S.P. Nandanoori, S. Kundu, W. Du, H. Hijazi, and R. Jain.
+  Generalized Convex Hull Pricing for the AC Optimal Power Flow Problem [online] M.</description>
     </item>
     
     <item>
@@ -77,7 +77,8 @@ My primary research interests include development of efficient formulations and 
       
       <guid>/home/media/</guid>
       <description>Out of the Dark 1663 article on how LANL-ANSI scientists strategize best to keep the lights on with a modern and secure national power grid. [url] [pdf]
-Early career paths at national labs American Mathematical Society article on how early career path as a scientist can be at Los Alamos National Laboratory. [url] [pdf]</description>
+Early career paths at national labs American Mathematical Society article on how early career path as a scientist can be at Los Alamos National Laboratory. [url] [pdf]
+TAMU-LANL partnership &amp;ldquo;The Texas A&amp;amp;M System National Laboratories Office&amp;rdquo; article on design robust complex networks. [url]</description>
     </item>
     
     <item>
