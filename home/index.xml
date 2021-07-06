@@ -67,8 +67,8 @@ My primary research interests include development of efficient formulations and 
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/home/software/</guid>
-      <description>Alpine.jl: A Julia/JuMP-based novel global optimization solver for non-convex MINLPs.  Technical papers underlying Alpine: Paper 1, Paper 2, Paper 3, Poster Presentation on Alpine at the 2nd Annual JuMP-dev Workshop, held at the Institut de Mathématiques de Bordeaux, FR, June 2018.       LaplacianOpt.jl: A Julia/JuMP-based package which implements polyhedral relaxation-based algorithms for optimization of weighted graph Laplacians.
- Juniper.jl: A Julia/JuMP-based package which implements various nonlinear branch-and-bound algorithms to solve non-convex MINLPs to local optimality.</description>
+      <description>Alpine.jl: A Julia/JuMP-based novel global optimization solver for non-convex MINLPs.  Technical papers underlying Alpine: Paper 1, Paper 2, Paper 3, Poster Presentation on Alpine at the 2nd Annual JuMP-dev Workshop, held at the Institut de Mathématiques de Bordeaux, FR, June 2018.       QuantumCircuitOpt.jl: A Julia/JuMP-based package which implements discrete optimization-based methods for optimal synthesis of the architecture for Quantum circuits.
+ LaplacianOpt.jl: A Julia/JuMP-based package which implements polyhedral relaxation-based algorithms for optimization of weighted graph Laplacians.</description>
     </item>
     
     <item>
