@@ -25,7 +25,7 @@ My primary research interests include development of efficient formulations and 
     <item>
       <title>Selected Publications</title>
       <link>/home/publications_selected/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0530</pubDate>
       
       <guid>/home/publications_selected/</guid>
       <description></description>
@@ -34,12 +34,11 @@ My primary research interests include development of efficient formulations and 
     <item>
       <title>Publications</title>
       <link>/home/publications/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0530</pubDate>
       
       <guid>/home/publications/</guid>
-      <description>2021  Piecewise Polyhedral Formulations for a Multilinear Term [online] [arXiv] K. Sundar, H. Nagarajan, J. Linderoth, S. Wang, R. Bent Operations Research Letters
- Optimal Power Flow in Distribution Networks under N-1 Disruptions: A Multi-stage Stochastic Programming Approach [arXiv] H. Yang, H. Nagarajan Informs Journal on Computing (Accepted)
- Mitigating the Impacts of Uncertain Geomagnetic Disturbances on Electric Grids: A Distributionally Robust Optimization Approach [arXiv] M. Ryu, H. Nagarajan, R.</description>
+      <description>2022  Mitigating the Impacts of Uncertain Geomagnetic Disturbances on Electric Grids: A Distributionally Robust Optimization Approach [online] [arXiv] M. Ryu, H. Nagarajan, R. Bent IEEE Transactions on Power Systems  2021  Piecewise Polyhedral Formulations for a Multilinear Term [online] [arXiv] K. Sundar, H. Nagarajan, J. Linderoth, S. Wang, R. Bent Operations Research Letters
+ Optimal Power Flow in Distribution Networks under N-1 Disruptions: A Multi-stage Stochastic Programming Approach [arXiv] H.</description>
     </item>
     
     <item>
@@ -104,7 +103,7 @@ To remove this section, either delete content/home/teaching.md or edit the front
     <item>
       <title>Tags</title>
       <link>/home/tags/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 -0600</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0530</pubDate>
       
       <guid>/home/tags/</guid>
       <description></description>
