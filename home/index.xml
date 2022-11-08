@@ -38,7 +38,8 @@ My primary research interests include development of efficient formulations and 
       
       <guid>/home/publications/</guid>
       <description>2022  Mitigating the Impacts of Uncertain Geomagnetic Disturbances on Electric Grids: A Distributionally Robust Optimization Approach [online] [arXiv] M. Ryu, H. Nagarajan, R. Bent IEEE Transactions on Power Systems
- Learning to Accelerate Globally Optimal Solutions to the AC Optimal Power Flow Problem [online] F. Cengil, H. Nagarajan, R. Bent, S. Eksioglu, B. Eksioglu Electric Power Systems Research Presented at 22nd Power Systems Computation Conference (PSCC), Porto, Portugal</description>
+ Optimal Microgrid Networking for Maximal Load Delivery in Phase Unbalanced Distribution Grids: A Declarative Modeling Approach [online] D. Fobes, H. Nagarajan, R. Bent IEEE Transactions on Smart Grid
+ Learning to Accelerate Globally Optimal Solutions to the AC Optimal Power Flow Problem [online] F.</description>
     </item>
     
     <item>
@@ -67,7 +68,7 @@ My primary research interests include development of efficient formulations and 
       
       <guid>/home/software/</guid>
       <description>Alpine: A Julia/JuMP-based novel global optimization solver for non-convex MINLPs.  Technical papers underlying Alpine: Paper 1, Paper 2, Paper 3, Poster Presentation on Alpine at the 2nd Annual JuMP-dev Workshop, held at the Institut de Mathématiques de Bordeaux, FR, June 2018.       QuantumCircuitOpt: A Julia/JuMP-based package which implements discrete optimization-based methods for provably optimal synthesis of the architecture for Quantum circuits.
- Technical paper underlying QCOpt: Paper 1 Presentation on QCOpt at the International Conference on Super Computing (SC21) for the Workshop on Quantum Computing Software, November 2021.</description>
+ Technical paper underlying QCOpt: Paper 1 Presentation at the JuliaCon 2022, July 2022.</description>
     </item>
     
     <item>
