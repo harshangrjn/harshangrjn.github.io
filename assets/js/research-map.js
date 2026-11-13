@@ -36,7 +36,7 @@
     width: 720,
     height: 650,
     radius: 168,
-    dotRadius: 5.1,
+    dotRadius: 6.2,
     fields: [
       {
         key: "optimization",
@@ -234,6 +234,30 @@
     var tooltip = map.querySelector(".research-map-tooltip");
     var fieldLayer = svgEl("g", { class: "research-map-fields" });
     var dotLayer = svgEl("g", { class: "research-map-dots" });
+    var pinnedLink = null;
+
+    function pinTooltip(link, paper, focusCard) {
+      if (pinnedLink && pinnedLink !== link) {
+        pinnedLink.classList.remove("is-pinned");
+        pinnedLink.setAttribute("aria-expanded", "false");
+      }
+      pinnedLink = link;
+      link.classList.add("is-pinned");
+      link.setAttribute("aria-expanded", "true");
+      showTooltip(map, tooltip, link, paper, true);
+      if (focusCard) tooltip.querySelector(".research-map-tooltip-link").focus();
+    }
+
+    function unpinTooltip(restoreFocus) {
+      if (!pinnedLink) return;
+      var previousLink = pinnedLink;
+      var focusWasInTooltip = tooltip.contains(document.activeElement);
+      pinnedLink.classList.remove("is-pinned");
+      pinnedLink.setAttribute("aria-expanded", "false");
+      pinnedLink = null;
+      hideTooltip(tooltip);
+      if (restoreFocus && focusWasInTooltip) previousLink.focus();
+    }
 
     config.fields.forEach(function (field, index) {
       var color = isOverview ? pillarColors[field.key] : detailColor(map.dataset.researchMap, index);
@@ -305,7 +329,8 @@
         class: "research-map-dot-link",
         href: point.paper.url,
         tabindex: "0",
-        "aria-label": point.paper.title + " (" + point.paper.year + ")",
+        "aria-label": "Show details for " + point.paper.title + " (" + point.paper.year + ")",
+        "aria-expanded": "false",
         "data-fields": scoreKeys(point.scores).join(" "),
       });
       var title = svgEl("title");
@@ -315,7 +340,7 @@
         class: "research-map-dot-hit",
         cx: point.x.toFixed(2),
         cy: point.y.toFixed(2),
-        r: isHomeOverview ? 11 : config.dotRadius + 4,
+        r: isHomeOverview ? config.dotRadius + 5.8 : config.dotRadius + 4,
       });
       var dot = svgEl("circle", {
         class: "research-map-dot",
@@ -335,24 +360,42 @@
       dotLayer.appendChild(link);
 
       link.addEventListener("pointerenter", function () {
-        showTooltip(map, tooltip, link, point.paper);
-      });
-      link.addEventListener("pointermove", function () {
-        showTooltip(map, tooltip, link, point.paper);
+        if (!pinnedLink) showTooltip(map, tooltip, link, point.paper, false);
       });
       link.addEventListener("pointerleave", function () {
-        if (document.activeElement !== link) hideTooltip(tooltip);
+        if (!pinnedLink && document.activeElement !== link) hideTooltip(tooltip);
       });
       link.addEventListener("focus", function () {
-        showTooltip(map, tooltip, link, point.paper);
+        if (!pinnedLink) showTooltip(map, tooltip, link, point.paper, false);
       });
       link.addEventListener("blur", function () {
-        hideTooltip(tooltip);
+        if (!pinnedLink) hideTooltip(tooltip);
+      });
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        pinTooltip(link, point.paper, event.detail === 0);
+      });
+      link.addEventListener("keydown", function (event) {
+        if (event.key === " ") {
+          event.preventDefault();
+          pinTooltip(link, point.paper, true);
+        }
       });
     });
 
     svg.appendChild(fieldLayer);
     svg.appendChild(dotLayer);
+
+    tooltip.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+    document.addEventListener("click", function () {
+      unpinTooltip(false);
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") unpinTooltip(true);
+    });
   }
 
   function placePoints(mapped, config, isOverview) {
@@ -379,6 +422,7 @@
           }, 0) / total;
       var angle = seeded(item.paper.key + "-angle") * Math.PI * 2;
       var spreadLimit = keys.length > 1 ? 28 : config.dotRadius < 6 ? 36 : 31;
+      if (isOverview) spreadLimit = keys.length > 1 ? 34 : 42;
       var spread = 8 + seeded(item.paper.key + "-radius") * spreadLimit;
       return {
         paper: item.paper,
@@ -390,7 +434,7 @@
       };
     });
 
-    var minimum = config.dotRadius * 2 + (isOverview ? 6 : 5);
+    var minimum = config.dotRadius * 2 + (isOverview ? 10 : 5);
     for (var iteration = 0; iteration < 220; iteration++) {
       for (var i = 0; i < points.length; i++) {
         for (var j = i + 1; j < points.length; j++) {
@@ -476,7 +520,7 @@
       var dx = point.x - field.x;
       var dy = point.y - field.y;
       var distance = Math.sqrt(dx * dx + dy * dy) || 0.01;
-      var margin = config.dotRadius + 9;
+      var margin = config.dotRadius + (config === overviewConfig ? 10 : 9);
       if (Math.abs(distance - radius) >= margin) return;
 
       var isMember = point.scores[key] >= 0.5;
@@ -513,20 +557,31 @@
     });
   }
 
-  function showTooltip(map, tooltip, link, paper) {
+  function showTooltip(map, tooltip, link, paper, isPinned) {
     var mapRect = map.getBoundingClientRect();
     var dotRect = link.getBoundingClientRect();
     var title = document.createElement("strong");
     var meta = document.createElement("span");
     title.textContent = paper.title;
-    meta.textContent = paper.year + " · Select to view publication";
-    tooltip.replaceChildren(title, meta);
+    meta.textContent = paper.year + (isPinned ? " · View publication" : " · Select dot for details");
+    tooltip.classList.toggle("is-pinned", isPinned);
+    if (isPinned) {
+      var publicationLink = document.createElement("a");
+      publicationLink.className = "research-map-tooltip-link";
+      publicationLink.href = paper.url;
+      publicationLink.setAttribute("aria-label", "View " + paper.title);
+      publicationLink.append(title, meta);
+      tooltip.replaceChildren(publicationLink);
+    } else {
+      tooltip.replaceChildren(title, meta);
+    }
     tooltip.hidden = false;
     tooltip.style.left = clamp(dotRect.left + dotRect.width / 2 - mapRect.left, 138, mapRect.width - 138) + "px";
     tooltip.style.top = dotRect.top + dotRect.height / 2 - mapRect.top + "px";
   }
 
   function hideTooltip(tooltip) {
+    tooltip.classList.remove("is-pinned");
     tooltip.hidden = true;
   }
 

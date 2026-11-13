@@ -1056,9 +1056,6 @@ progress#progress::-moz-progress-bar {
     border: 1.5px solid var(--hn-accent);
   }
 
-  &:first-child::before {
-    background: var(--hn-accent);
-  }
 }
 
 .update-date {

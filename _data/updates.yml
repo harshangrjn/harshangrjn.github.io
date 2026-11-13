@@ -2,6 +2,9 @@
 # `date` is free text so it can be as precise as the source allows.
 # Markdown is allowed in `text`.
 
+- date: Jan 2027
+  text: Organizing the [7th Grid Science Winter School and Conference](https://web.cvent.com/event/d6dcb6c5-dee0-4a22-b782-873001f3fed4/summary), Santa Fe, NM.
+
 - date: Dec 2026
   text: Two resilient distribution-grid papers accepted at [IEEE CDC 2026](https://css.paperplaza.net/conferences/conferences/CDC26/program/CDC26_ContentListWeb_2.html#tubt10), Honolulu, HI.
 
