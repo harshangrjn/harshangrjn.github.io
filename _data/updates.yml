@@ -1,0 +1,21 @@
+# "Recent updates" on the home page, newest first.
+# `date` is free text so it can be as precise as the source allows.
+# Markdown is allowed in `text`.
+
+- date: Dec 2026
+  text: Two resilient distribution-grid papers accepted at [IEEE CDC 2026](https://css.paperplaza.net/conferences/conferences/CDC26/program/CDC26_ContentListWeb_2.html#tubt10), Honolulu, HI.
+
+- date: Oct 2026
+  text: Distinguished Performance Award as a member of the [DARPA Quantum Benchmarking Initiative](https://www.darpa.mil/research/programs/quantum-benchmarking-initiative) team.
+
+- date: Sep 2026
+  text: Keynote on quantum-accelerated power-grid optimization at the [IEEE QCE Power Systems Workshop](https://sites.google.com/view/quantumpower-qce-workshop2026/home), Toronto.
+
+- date: Aug 2026
+  text: "[AC optimal transmission switching paper](https://doi.org/10.1287/ijoc.2023.0236) selected as a Featured Paper in the *INFORMS Journal on Computing* (Aug–Oct issue)."
+
+- date: Mar 2026
+  text: Track chair for “Global Optimization” at the [INFORMS Optimization Society Conference](https://ios2026.isye.gatech.edu/), Atlanta.
+
+- date: May 2025
+  text: Appointed Technical Editor of [*Mathematical Programming Computation*](https://link.springer.com/journal/12532/editorial-board).

@@ -1,0 +1,26 @@
+{%- comment -%} Local override of al_folio_core's footer.liquid. {%- endcomment -%}
+{%- assign profiles = site.data.profiles -%}
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-id">
+        <p class="footer-name">{{ site.first_name }} {{ site.last_name }}</p>
+        <p class="footer-affil">Los Alamos National Laboratory</p>
+        <a class="footer-email" href="mailto:{{ profiles.email }}">{{ profiles.email }}</a>
+      </div>
+      <div class="icon-links footer-icons" aria-label="Academic profiles">
+        {% for link in profiles.links %}
+          <a class="icon-link" href="{{ link.url }}" title="{{ link.label }}" aria-label="{{ link.label }}"><i class="{{ link.icon }}" aria-hidden="true"></i></a>
+        {% endfor %}
+      </div>
+    </div>
+    <p class="footer-fine">
+      &copy; Copyright {{ site.time | date: '%Y' }}
+      {{ site.first_name }}
+      {{ site.last_name }}.
+      {% if site.last_updated %}
+        Last updated {{ site.time | date: '%B %-d, %Y' }}.
+      {% endif %}
+    </p>
+  </div>
+</footer>

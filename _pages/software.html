@@ -1,0 +1,34 @@
+---
+layout: hn-page
+title: Software
+permalink: /software/
+nav: true
+nav_order: 4
+heading: Software
+lede: >
+  New methods matter most when others can use them. These open-source Julia packages implement the
+  algorithms behind my research and are used by researchers and practitioners in optimization,
+  power systems, and quantum computing.
+description: Open-source research software by Harsha Nagarajan — Alpine.jl, Juniper.jl, PowerModelsONM.jl, QuantumCircuitOpt.jl, and LaplacianOpt.jl.
+---
+
+<div class="sw-grid">
+  {% for sw in site.data.software %}
+    <article class="sw-card area-accent--{{ sw.area }} reveal" id="{{ sw.name | slugify }}">
+      <header class="sw-head">
+        <h2 class="sw-name"><a href="{{ sw.github }}">{{ sw.name }}</a></h2>
+        {% assign area = site.data.research_areas | where: 'id', sw.area | first %}
+        {% if area %}
+          <a class="area-chip area-chip--{{ sw.area }}" href="{{ '/research/' | relative_url }}#{{ sw.area }}">{{ area.short }}</a>
+        {% endif %}
+      </header>
+      <p class="sw-tagline">{{ sw.tagline }}</p>
+
+      <div class="sw-links">
+        {% for link in sw.links %}
+          <a class="pub-link" href="{{ link.url | relative_url }}"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}><i class="{{ link.icon }}" aria-hidden="true"></i> {{ link.label }}</a>
+        {% endfor %}
+      </div>
+    </article>
+  {% endfor %}
+</div>

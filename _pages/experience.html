@@ -1,0 +1,110 @@
+---
+layout: hn-page
+title: Experience
+permalink: /experience/
+nav: true
+nav_order: 3
+page_class: page-experience
+heading: Experience
+description: Professional experience, education, and honors of Harsha Nagarajan.
+# Professional service is hidden for now; set to true to show it again (data is in _data/experience.yml).
+show_service: false
+---
+{%- assign xp = site.data.experience -%}
+
+<nav class="area-nav reveal" aria-label="On this page">
+  <a class="area-pill" href="#professional"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Experience</a>
+  <a class="area-pill" href="#education"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Education</a>
+  <a class="area-pill" href="#honors"><i class="fa-solid fa-award" aria-hidden="true"></i> Honors</a>
+  {% if page.show_service %}
+    <a class="area-pill" href="#service">Service</a>
+  {% endif %}
+</nav>
+
+{%- comment -%} Professional experience and education share the same timeline markup. {%- endcomment -%}
+{% assign groups = 'professional,education' | split: ',' %}
+{% for group in groups %}
+  {% if group == 'professional' %}
+    {% assign entries = xp.professional %}
+    {% assign group_title = 'Professional experience' %}
+  {% else %}
+    {% assign entries = xp.education %}
+    {% assign group_title = 'Education' %}
+  {% endif %}
+  <section class="xp-section reveal" id="{{ group }}" aria-labelledby="{{ group }}-title">
+    <h2 id="{{ group }}-title" class="section-title">{{ group_title }}</h2>
+    <ol class="timeline">
+      {% for item in entries %}
+        <li class="timeline-item{% if item.current %} is-current{% endif %}">
+          <span class="timeline-node" aria-hidden="true"><i class="{{ item.icon }}"></i></span>
+          <div class="timeline-card">
+            <div class="timeline-roles">
+              {% for role in item.roles %}
+                <div class="timeline-role">
+                  <h3 class="timeline-title">{{ role.title }}</h3>
+                  <span class="timeline-dates">{{ role.dates }}</span>
+                </div>
+              {% endfor %}
+            </div>
+            <p class="timeline-org">
+              {%- if item.url -%}
+                <a href="{{ item.url }}">{{ item.org }}</a>
+              {%- else -%}
+                {{ item.org }}
+              {%- endif -%}
+              {%- if item.unit %} · <span class="timeline-unit">{{ item.unit }}</span>{% endif -%}
+            </p>
+            {% if item.summary %}
+              <p class="timeline-summary">{{ item.summary | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endfor %}
+
+<section class="xp-section reveal" id="honors" aria-labelledby="honors-title">
+  <h2 id="honors-title" class="section-title">Honors &amp; awards</h2>
+  <ul class="award-list">
+    {% for award in xp.awards %}
+      <li class="award-item">
+        <span class="award-year">{{ award.year }}</span>
+        <div>
+          <p class="award-title">
+            {%- if award.url -%}
+              <a href="{{ award.url }}">{{ award.title }}</a>
+            {%- else -%}
+              {{ award.title }}
+            {%- endif -%}
+          </p>
+          <p class="award-detail">{{ award.detail }}</p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+{% if page.show_service %}
+<section class="xp-section reveal" id="service" aria-labelledby="service-title">
+  <h2 id="service-title" class="section-title">Professional service</h2>
+  <div class="service-grid">
+    {% for block in xp.service %}
+      <div class="service-block">
+        <h3 class="sub-title">{{ block.heading }}</h3>
+        <ul class="service-list">
+          {% for item in block.items %}
+            <li>
+              {%- if item.url -%}
+                <a href="{{ item.url }}">{{ item.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
+              {%- else -%}
+                {{ item.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}
+              {%- endif -%}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

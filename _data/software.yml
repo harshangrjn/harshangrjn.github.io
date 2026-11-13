@@ -1,0 +1,78 @@
+# Open-source software cards (Home + Software pages).
+#
+# - `featured: true` shows the card on the home page.
+# - `links` are shown as buttons, in order.
+
+- name: Alpine.jl
+  featured: true
+  tagline: Global solver for nonconvex mixed-integer nonlinear programs
+  area: global
+  github: https://github.com/lanl-ansi/Alpine.jl
+  links:
+    - label: GitHub
+      icon: fa-brands fa-github
+      url: https://github.com/lanl-ansi/Alpine.jl
+    - label: JuMP-dev talk
+      icon: fa-solid fa-play
+      url: https://www.youtube.com/watch?v=mwkhiEIS5JA
+
+- name: Juniper.jl
+  featured: true
+  tagline: Nonlinear branch-and-bound for nonconvex MINLPs
+  area: global
+  github: https://github.com/lanl-ansi/Juniper.jl
+  links:
+    - label: GitHub
+      icon: fa-brands fa-github
+      url: https://github.com/lanl-ansi/Juniper.jl
+    - label: Talk
+      icon: fa-solid fa-play
+      url: https://www.youtube.com/watch?v=Z3XioXfZyfA
+
+- name: LaplacianOpt.jl
+  featured: false
+  tagline: Optimizing weighted graph Laplacians
+  area: networks
+  github: https://github.com/harshangrjn/LaplacianOpt.jl
+  links:
+    - label: GitHub
+      icon: fa-brands fa-github
+      url: https://github.com/harshangrjn/LaplacianOpt.jl
+
+- name: PowerModelsONM.jl
+  featured: true
+  tagline: Optimal operation of resilient networked microgrids
+  area: resilience
+  github: https://github.com/lanl-ansi/PowerModelsONM.jl
+  links:
+    - label: GitHub
+      icon: fa-brands fa-github
+      url: https://github.com/lanl-ansi/PowerModelsONM.jl
+    - label: DOE article
+      icon: fa-solid fa-newspaper
+      url: https://www.energy.gov/oe/articles/microgrid-software-program-los-alamos-lab-honored
+    - label: R&D 100 Award video
+      icon: fa-solid fa-play
+      url: https://www.youtube.com/watch?v=XYRzs7BrY1I
+
+- name: QuantumCircuitOpt.jl
+  featured: true
+  tagline: Provably optimal quantum circuit design via discrete optimization
+  area: quantum
+  github: https://github.com/harshangrjn/QuantumCircuitOpt.jl
+  links:
+    - label: GitHub
+      icon: fa-brands fa-github
+      url: https://github.com/harshangrjn/QuantumCircuitOpt.jl
+    - label: CPAIOR 2024 masterclass slides
+      icon: fa-solid fa-file-pdf
+      url: https://github.com/astra-uu-se/cpaior2024-masterclass/blob/main/lecture-4-nagarajan.pdf
+    - label: JuliaCon 2022 talk
+      icon: fa-solid fa-play
+      url: https://www.youtube.com/watch?v=OeONXwD4JJY
+    - label: SC22 Talk
+      icon: fa-brands fa-vimeo-v
+      url: https://vimeo.com/771366943/01810daa4e
+    - label: SC21 Talk
+      icon: fa-brands fa-youtube
+      url: https://www.youtube.com/watch?v=sf1HJW5Vmio

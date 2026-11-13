@@ -1,0 +1,174 @@
+---
+layout: default
+---
+{%- assign profiles = site.data.profiles -%}
+<div class="hn-page home">
+  <section class="hero reveal" aria-labelledby="hero-name">
+    <div class="hero-text">
+      {% if page.eyebrow %}
+        <p class="eyebrow">{{ page.eyebrow }}</p>
+      {% endif %}
+      <h1 id="hero-name" class="hero-name"><span class="hero-first">{{ site.first_name }}</span> <span class="hero-last">{{ site.last_name }}</span></h1>
+      <ul class="hero-roles">
+        {% for role in page.roles %}
+          <li>
+            <strong>{{ role.title }}</strong> ·
+            {% if role.url -%}
+              <a href="{{ role.url }}">{{ role.org }}</a>
+            {%- else -%}
+              {{ role.org }}
+            {%- endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="hero-bio">{{ content }}</div>
+      <div class="hero-actions">
+        <a class="btn-primary" href="mailto:{{ profiles.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email me</a>
+        <div class="icon-links" role="list" aria-label="Academic profiles">
+          {% for link in profiles.links %}
+            <a class="icon-link" role="listitem" href="{{ link.url }}" title="{{ link.label }}" aria-label="{{ link.label }}"><i class="{{ link.icon }}" aria-hidden="true"></i></a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <picture>
+        <source srcset="{{ '/assets/img/prof_pic.webp' | relative_url }}" type="image/webp">
+        <img
+          src="{{ '/assets/img/prof_pic.jpg' | relative_url }}"
+          alt="Portrait of {{ site.first_name }} {{ site.last_name }}"
+          width="360"
+          height="360"
+          fetchpriority="high"
+        >
+      </picture>
+    </figure>
+  </section>
+
+  <section class="section home-research reveal" aria-labelledby="areas-heading">
+    <div class="section-head">
+      <h2 id="areas-heading" class="section-title">Research areas</h2>
+      <a class="section-link" href="{{ '/research/' | relative_url }}">
+        Explore research <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <div class="home-research-overview">
+      {% include research-map-overview.liquid id='home' %}
+
+      <div class="home-research-copy">
+        <p>{{ page.research_intro }}</p>
+        <p>
+          Across these areas, I focus on formulations and algorithms that retain physical
+          fidelity and mathematical guarantees while remaining useful on realistic systems.
+          The overlaps show where a methods contribution and an application question meet.
+        </p>
+      </div>
+    </div>
+
+    <div class="home-pillar-grid">
+      <article class="home-pillar home-pillar--optimization">
+        <header class="home-pillar__head">
+          <span class="home-pillar__icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
+          <h3><a href="{{ '/research/' | relative_url }}#global">Optimization &amp; Machine Learning</a></h3>
+        </header>
+        <p>
+          Mathematical programming and global optimization algorithms for nonconvex programs
+          form the methodological core. Learning-accelerated strategies and open-source software
+          target repeatedly solved parametric problems, reducing solution times while retaining
+          optimality guarantees. This work also includes optimization under uncertainty for
+          power-system applications.
+        </p>
+        <nav class="home-pillar__links" aria-label="Optimization and machine learning topics">
+          <a href="{{ '/research/' | relative_url }}#global">Global optimization</a>
+          <a href="{{ '/research/' | relative_url }}#uncertainty">Under uncertainty</a>
+          <a href="{{ '/research/' | relative_url }}#learning">Learning for optimization</a>
+        </nav>
+      </article>
+
+      <article class="home-pillar home-pillar--power">
+        <header class="home-pillar__head">
+          <span class="home-pillar__icon" aria-hidden="true">
+            <svg class="home-pillar__svg" viewBox="0 0 24 24" focusable="false">
+              <path d="M10 3h4l4 18H6L10 3Z"></path>
+              <path d="M8.7 9h6.6M7.8 13h8.4M7 17h10M10 3 7.7 7h8.6L14 3"></path>
+              <path d="M2 7h5.7M16.3 7H22"></path>
+              <circle cx="2" cy="7" r="1"></circle>
+              <circle cx="22" cy="7" r="1"></circle>
+            </svg>
+          </span>
+          <h3><a href="{{ '/research/' | relative_url }}#uncertainty">Power Systems Optimization</a></h3>
+        </header>
+        <p>
+          AC optimal power flow and related discrete variants, including unit commitment and
+          transmission switching, under uncertainty from renewable generation. Resilience work
+          spans microgrid design, reconfiguration, and black-start restoration.
+        </p>
+        <nav class="home-pillar__links" aria-label="Power systems optimization topics">
+          <a href="{{ '/research/' | relative_url }}#uncertainty">Planning &amp; operations</a>
+          <a href="{{ '/research/' | relative_url }}#resilience">Grid resilience</a>
+        </nav>
+      </article>
+
+      <article class="home-pillar home-pillar--networks">
+        <header class="home-pillar__head">
+          <span class="home-pillar__icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></span>
+          <h3><a href="{{ '/research/' | relative_url }}#networks">Networks &amp; Control</a></h3>
+        </header>
+        <p>
+          Optimization and spectral graph methods for robust network and topology design,
+          with applications to disturbance propagation, robot localization, and UAV
+          communication networks.
+        </p>
+        <nav class="home-pillar__links" aria-label="Networks, control, and robotics topics">
+          <a href="{{ '/research/' | relative_url }}#networks">Networks, Control &amp; Robotics</a>
+        </nav>
+      </article>
+
+      <article class="home-pillar home-pillar--quantum">
+        <header class="home-pillar__head">
+          <span class="home-pillar__icon" aria-hidden="true">
+            {% include research-area-icon.liquid kind='quantum-circuit' class='home-pillar__svg' %}
+          </span>
+          <h3><a href="{{ '/research/' | relative_url }}#quantum">Quantum Computing</a></h3>
+        </header>
+        <p>
+          Optimization methods for provably optimal quantum circuit design, efficient
+          hardware-aware encodings for constrained optimization problems, and hybrid
+          quantum–classical approaches that accelerate classical optimization algorithms.
+        </p>
+        <nav class="home-pillar__links" aria-label="Quantum computing topics">
+          <a href="{{ '/research/' | relative_url }}#quantum">Quantum Computing</a>
+        </nav>
+      </article>
+    </div>
+  </section>
+
+  <section class="section home-split reveal">
+    <div class="updates">
+      <h2 id="updates-heading" class="section-title">Recent updates</h2>
+      <ol class="update-list" aria-labelledby="updates-heading">
+        {% for item in site.data.updates limit: page.updates_limit %}
+          <li class="update-item">
+            <span class="update-date">{{ item.date }}</span>
+            <span class="update-text">{{ item.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <aside class="contact-card" id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-title">Contact</h2>
+      <a class="contact-email" href="mailto:{{ profiles.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ profiles.email }}</a>
+      <ul class="profile-list">
+        {% for link in profiles.links %}
+          <li>
+            <a href="{{ link.url }}"><i class="{{ link.icon }}" aria-hidden="true"></i> {{ link.label }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </aside>
+  </section>
+</div>
+
+{% include research-map-assets.liquid %}
+<script defer src="{{ '/assets/js/site.js' | relative_url | bust_file_cache }}"></script>

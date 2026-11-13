@@ -1,0 +1,107 @@
+# Experience & Education page. All entries are taken from the CV.
+# Newest first. `roles` lets one institution hold several titles.
+# `summary` is a single short sentence shown under each entry.
+
+professional:
+  - org: Los Alamos National Laboratory
+    unit: Theoretical Division (T-5)
+    url: https://www.lanl.gov
+    icon: fa-solid fa-flask
+    current: true
+    roles:
+      - title: Staff Scientist-3
+        dates: July 2022 – present
+      - title: Staff Scientist-2
+        dates: March 2017 – June 2022
+    summary: Led and co-led research programs in global, stochastic, robust, and learning-augmented optimization for energy networks and quantum computing.
+
+  - org: University of Michigan
+    unit: Electrical Engineering and Computer Science
+    url: https://eecs.engin.umich.edu
+    icon: fa-solid fa-building-columns
+    current: true
+    roles:
+      - title: Visiting Research Scientist
+        dates: April 2026 – present
+
+  - org: Los Alamos National Laboratory
+    unit: Center for Nonlinear Studies (CNLS)
+    url: https://cnls.lanl.gov
+    icon: fa-solid fa-flask
+    roles:
+      - title: Postdoctoral Researcher
+        dates: July 2014 – February 2017
+    summary: Developed stochastic and mixed-integer nonlinear optimization algorithms for uncertain energy networks.
+
+  - org: Technip Inc.
+    unit: Houston, TX
+    url: https://www.ten.com/en
+    icon: fa-solid fa-industry
+    roles:
+      - title: Assistant Design Engineer
+        dates: August 2008 – August 2009
+    summary: Developed optimization and control toolboxes for dynamic models of offshore oil and gas structures.
+
+education:
+  - org: Texas A&M University
+    url: https://www.tamu.edu
+    icon: fa-solid fa-graduation-cap
+    roles:
+      - title: Ph.D., Mechanical Engineering
+        dates: 2009 – 2014
+    summary: "Systems, control, and optimization. Dissertation: *Synthesizing Robust Unmanned Aerial Vehicle Networks under Resource Constraints*."
+
+  - org: National Institute of Technology (NIT), Trichy
+    url: https://www.nitt.edu
+    icon: fa-solid fa-graduation-cap
+    roles:
+      - title: B.Tech.
+        dates: 2002 – 2006
+
+awards:
+  - year: "2026"
+    title: Distinguished Performance Award
+    detail: Member of the award-winning team for DARPA's Quantum Benchmarking Initiative.
+    url: https://www.darpa.mil/research/programs/quantum-benchmarking-initiative
+  - year: "2026"
+    title: INFORMS Journal on Computing Featured Paper
+    detail: August–October issue.
+    url: https://doi.org/10.1287/ijoc.2023.0236
+  - year: "2023"
+    title: R&D 100 Award
+    detail: Award-winning team for “PowerModelsONM, Optimal Operation of Resilient Networked Microgrids.”
+    url: https://www.energy.gov/oe/articles/microgrid-software-program-los-alamos-lab-honored
+  - year: "2019"
+    title: Outstanding Reviewer
+    detail: IEEE Transactions on Power Systems.
+    url: https://doi.org/10.1109/TPWRS.2020.2991621
+  - year: "2019"
+    title: LANL Early Career Researcher Award
+    detail: “Discrete Optimization Algorithms in Quantum Computing.”
+    url: https://cdn.lanl.gov/files/annualprogressreport-fy20-projectcompendiumbycapabilitypillar_fe52b.pdf#page=208
+  - year: "2012"
+    title: Best Paper Award
+    detail: “Complex Networks” track, ASME Dynamic Systems and Control Conference.
+  - year: "2006"
+    title: Institute Gold Medal & Shanmugam Endowment Award
+    detail: Highest CGPA in the department, NIT Trichy.
+
+service:
+  - heading: Editorial
+    items:
+      - text: Technical Editor, *Mathematical Programming Computation* (May 2025 – present)
+        url: https://link.springer.com/journal/12532/editorial-board
+  - heading: Conference organization
+    items:
+      - text: Organizing committee, LANL Grid Science Winter School & Conference, Santa Fe, NM (2021, 2023, 2025, 2027)
+      - text: Technical committee, Global Optimization Workshop (STOGO), Stockholm (2025)
+        url: https://sites.google.com/view/stogo25/
+      - text: Technical committee, PowerUp 2026, Boulder, CO (2026)
+        url: https://www.power-up.us/committee
+      - text: Track chair, “Global Optimization,” INFORMS Optimization Society Conference, Atlanta (2026)
+        url: https://ios2026.isye.gatech.edu/
+      - text: Session organizer, ISMP 2027 (Amsterdam), INFORMS Annual Meeting 2025, ISMP 2024, ICCOPT 2022, Los Alamos–Arizona Days 2020
+  - heading: Professional societies
+    items:
+      - text: IEEE Senior Member (2025 – present); Member (2021 – 2025)
+      - text: INFORMS Member (2018 – present); INFORMS Optimization Society Member (August 2026 – present)

@@ -1,0 +1,19 @@
+{% assign icon_kind = include.kind | default: include.area.icon_svg %}
+{% if icon_kind == 'quantum-circuit' %}
+  <svg class="{{ include.class }}" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+    <path d="M8 1v3M12 1v3M16 1v3M8 20v3M12 20v3M16 20v3M1 8h3M1 12h3M1 16h3M20 8h3M20 12h3M20 16h3"></path>
+    <circle cx="9" cy="9" r="1.5"></circle>
+    <circle cx="15" cy="9" r="1.5"></circle>
+    <circle cx="12" cy="15" r="1.5"></circle>
+    <path d="m10.3 9.8 1.1 3.7M13.7 9.8l-1.1 3.7M10.5 9h3"></path>
+  </svg>
+{% elsif icon_kind == 'wind-turbine' %}
+  <svg class="{{ include.class }}" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <circle cx="12" cy="8" r="1.5"></circle>
+    <path d="m12 6.5-1.6-5.2L12 .5l1.4 6.2ZM13.3 8.6l6.1 1.2.1 1.8-6.6-1.8ZM10.9 9.2l-4.2 5.1-1.5-1 4.7-5.2Z"></path>
+    <path d="M12 9.5V22M8.5 22h7"></path>
+  </svg>
+{% else %}
+  <i class="{{ include.area.icon }} {{ include.class }}" aria-hidden="true"></i>
+{% endif %}
