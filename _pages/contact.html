@@ -1,0 +1,45 @@
+---
+layout: hn-page
+title: Contact
+permalink: /contact/
+# Hidden for now (the home page and footer already carry this information).
+# Set `published: true` to bring the page and its nav tab back.
+published: false
+nav: true
+nav_order: 7
+page_class: page-contact
+heading: Get in touch
+lede: Email is the best way to reach me.
+description: Contact information and academic profiles for Harsha Nagarajan.
+---
+{%- assign profiles = site.data.profiles -%}
+
+<div class="contact-layout reveal">
+  <div class="contact-main">
+    <p class="eyebrow">Email</p>
+    <a class="contact-email contact-email--large" href="mailto:{{ profiles.email }}">{{ profiles.email }}</a>
+
+    <p class="eyebrow">Affiliation</p>
+    <ul class="affil-list">
+      <li>
+        <span class="affil-title">Staff Scientist</span>
+        Theoretical Division (T-5), Los Alamos National Laboratory, Los Alamos, NM
+      </li>
+    </ul>
+  </div>
+
+  <div class="contact-profiles">
+    <p class="eyebrow">Profiles</p>
+    <ul class="profile-cards">
+      {% for link in profiles.links %}
+        <li>
+          <a class="profile-card" href="{{ link.url }}">
+            <i class="{{ link.icon }}" aria-hidden="true"></i>
+            <span>{{ link.label }}</span>
+            <span class="profile-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

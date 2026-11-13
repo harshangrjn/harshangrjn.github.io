@@ -1,0 +1,24 @@
+{%- assign map_id = include.id | default: 'research' -%}
+<figure class="research-overview-figure">
+  <div
+    class="research-map research-map--overview research-map--home"
+    data-research-map="overview"
+    data-map-title="Publication map across four research pillars"
+  >
+    <svg
+      class="research-map-svg"
+      viewBox="0 0 720 650"
+      role="img"
+      aria-labelledby="{{ map_id }}-map-title {{ map_id }}-map-desc"
+    >
+      <title id="{{ map_id }}-map-title">Publication map across four connected research pillars</title>
+      <desc id="{{ map_id }}-map-desc">Four overlapping research fields contain clickable dots representing publications.</desc>
+    </svg>
+    <div class="research-map-tooltip" role="status" hidden></div>
+    <noscript><p class="research-map-fallback">Enable JavaScript to view the interactive publication map.</p></noscript>
+  </div>
+  <figcaption class="home-research-instruction">
+    <i class="fa-solid fa-arrow-pointer" aria-hidden="true"></i>
+    Select a dot to read the paper.
+  </figcaption>
+</figure>

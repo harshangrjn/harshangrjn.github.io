@@ -1,0 +1,57 @@
+---
+layout: hn-page
+title: Group
+permalink: /group/
+nav: true
+nav_order: 5
+page_class: page-group
+heading: Group
+lede: >-
+  I have had the good fortune of mentoring talented postdoctoral and graduate researchers at
+  Los Alamos National Laboratory, many of whom have gone on to careers in academia, national
+  laboratories, and industry.
+description: Current and former postdoctoral and graduate researchers mentored by Harsha Nagarajan.
+---
+{%- assign group = site.data.group -%}
+
+{% assign sections = 'current,former' | split: ',' %}
+{% for section in sections %}
+  {% if section == 'current' %}
+    {% assign blocks = group.current %}
+    {% assign section_title = 'Current members' %}
+  {% else %}
+    {% assign blocks = group.former %}
+    {% assign section_title = 'Former members' %}
+  {% endif %}
+  <section class="xp-section reveal" id="{{ section }}" aria-labelledby="{{ section }}-title">
+    <h2 id="{{ section }}-title" class="section-title">{{ section_title }}</h2>
+    {% for block in blocks %}
+      <h3 class="sub-title">{{ block.heading }}</h3>
+      <ul class="people-list">
+        {% for p in block.people %}
+          <li>
+            {%- assign profile_url = p.scholar | default: p.linkedin | default: p.researchgate -%}
+            {%- if profile_url -%}
+              {%- if p.scholar -%}
+                {%- assign profile_icon = 'ai ai-google-scholar' -%}
+                {%- assign profile_label = 'Google Scholar' -%}
+              {%- elsif p.linkedin -%}
+                {%- assign profile_icon = 'fa-brands fa-linkedin' -%}
+                {%- assign profile_label = 'LinkedIn' -%}
+              {%- else -%}
+                {%- assign profile_icon = 'ai ai-researchgate' -%}
+                {%- assign profile_label = 'ResearchGate' -%}
+              {%- endif -%}
+              <a class="people-name" href="{{ profile_url }}" target="_blank" rel="noopener" title="{{ p.name }} on {{ profile_label }}" aria-label="{{ p.name }} ({{ profile_label }} profile)">
+                {{- p.name -}}<i class="people-link-icon {{ profile_icon }}" aria-hidden="true"></i></a>
+            {%- else -%}
+              <span class="people-name">{{ p.name }}</span>
+            {%- endif -%}
+            {%- if p.detail %}, <span class="people-detail">{{ p.detail }}</span>{% endif -%}
+            {%- if p.note %} <span class="people-note">({{ p.note | markdownify | remove: '<p>' | remove: '</p>' | strip }})</span>{% endif -%}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </section>
+{% endfor %}

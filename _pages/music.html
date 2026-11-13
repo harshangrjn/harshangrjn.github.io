@@ -1,0 +1,230 @@
+---
+layout: hn-page
+title: Beyond Science
+permalink: /music/
+nav: true
+nav_order: 7
+page_class: page-music
+heading: Music and Expression
+description: Carnatic music performances and creative projects by Harsha Nagarajan.
+---
+
+<section class="music-portrait" aria-labelledby="music-quote">
+  <div class="music-portrait__copy">
+    <blockquote class="music-quote" id="music-quote">
+      <p>“If I were not a physicist, I would probably be a musician. I often think in music.”</p>
+      <cite>Albert Einstein</cite>
+    </blockquote>
+    <p class="music-belief">I share this belief: music is another way of structured creative thinking.</p>
+
+    <figure class="music-instrument">
+      <img
+        src="{{ '/assets/img/music/tambura-met.jpg' | relative_url }}"
+        alt="Decorative miniature Indian tambura painted with figures from Hindu tradition"
+        width="426"
+        height="624"
+        fetchpriority="high"
+      >
+      <figcaption>
+        <a href="https://en.wikipedia.org/wiki/Tanpura"><em>Tambura</em></a>: a
+        traditional drone instrument used in Indian classical music.
+      </figcaption>
+    </figure>
+
+    <div class="music-intro">
+      <p>
+        <a href="https://en.wikipedia.org/wiki/Carnatic_music">Carnatic music</a>, the classical music
+        tradition of South India, has evolved over centuries into a rich system of melody, rhythm,
+        and improvisation. Its foundations lie in <em>raga</em> (melodic frameworks) and
+        <em>tala</em> (rhythmic cycles). A raga is more than a scale: its characteristic phrases and
+        subtle melodic ornamentations give it a distinct musical identity, while tala provides the
+        structure for intricate rhythmic patterns and exploration. What fascinates me is how these
+        precisely defined frameworks leave extraordinary room for individual expression and
+        spontaneous creativity.
+      </p>
+      <p>
+        The intersection of classical Indian music and science has a rich history. Nobel laureate
+        <a href="https://en.wikipedia.org/wiki/C._V._Raman">Sir C. V. Raman</a> explored the acoustics
+        of Indian musical instruments, including the <em>tambura</em> pictured on the right. In his
+        1921 research paper,
+        <a href="https://dspace.rri.res.in/server/api/core/bitstreams/be598256-13f2-4844-a51a-945d9f45432e/content"><em>On Some Indian Stringed Instruments</em></a>,
+        he investigated how the delicate interaction between the strings and the instrument's curved
+        bridge produces its distinctive, richly resonant drone.
+      </p>
+      <p>
+        Alongside my career in science, I am a Carnatic vocalist, performer, and teacher. I was selected
+        as an
+        <a href="https://www.thehindu.com/features/friday-review/music/indianraga-fellowship-a-fusion-of-music-contest-and-academic-scholarship-says-cofounder/article5119924.ece">IndianRaga Fellow in 2013</a>.
+        My musical work spans concerts, collaborations, and original melodic settings of verses from
+        classical Sanskrit texts. I have performed across India, including during Chennai's Margazhi
+        music seasons, and the United States, and have presented lecture-demonstrations exploring the
+        theory and structure of Indian classical music, including
+        <em>Raga for Starters: A Journey into Indian Classical Music</em> at
+        <em>3 Cups of Tea: Heritage from India</em> in Santa Fe, New Mexico
+        (<a href="{{ '/pdf/classical_music_slides.pdf' | relative_url }}">presentation slides</a>).
+      </p>
+      <p class="music-invitation">
+        A selection of my performances, collaborations, and creative musical projects can be explored
+        through the Spotify and YouTube links below.
+      </p>
+    </div>
+  </div>
+</section>
+
+<nav class="music-jump-nav" aria-label="Explore music sections">
+  <a class="music-jump-link" href="#featured-performances">
+    <span class="music-jump-link__icon" aria-hidden="true">
+      <i class="fa-solid fa-microphone-lines"></i>
+    </span>
+    <span>Featured Performances</span>
+  </a>
+  <a class="music-jump-link" href="#creative-projects">
+    <span class="music-jump-link__icon" aria-hidden="true">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+    </span>
+    <span>Creative Projects</span>
+  </a>
+  <a class="music-jump-link" href="#music-outreach">
+    <span class="music-jump-link__icon" aria-hidden="true">
+      <i class="fa-solid fa-people-group"></i>
+    </span>
+    <span>Music Outreach</span>
+  </a>
+</nav>
+
+<section class="music-section reveal" aria-labelledby="featured-performances">
+  <header class="music-section__head">
+    <h2 id="featured-performances">Featured Performances</h2>
+  </header>
+
+  <div class="music-grid music-grid--performances">
+    {% for item in site.data.music.performances %}
+      <article class="music-card">
+        <div class="music-card__body">
+          <p class="music-kicker">{{ item.subtitle }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+
+        {% if item.youtube_id %}
+          <div class="music-embed music-embed--video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/{{ item.youtube_id }}"
+              title="{{ item.title }} performance"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        {% elsif item.spotify_embed %}
+          <div class="music-embed music-embed--spotify">
+            <iframe
+              src="{{ item.spotify_embed }}"
+              title="Listen to {{ item.title }} on Spotify"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </div>
+        {% endif %}
+
+        <div class="music-card__links">
+          {% if item.youtube %}
+            <a href="{{ item.youtube }}"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</a>
+          {% endif %}
+          {% if item.spotify %}
+            <a href="{{ item.spotify }}"><i class="fa-brands fa-spotify" aria-hidden="true"></i> Spotify</a>
+          {% endif %}
+          {% if item.tidal %}
+            <a href="{{ item.tidal }}"><i class="fa-solid fa-headphones" aria-hidden="true"></i> Tidal</a>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="music-section reveal" aria-labelledby="creative-projects">
+  <header class="music-section__head">
+    <h2 id="creative-projects">Creative Projects</h2>
+  </header>
+
+  <p class="music-section__intro">
+    I have been fortunate to mentor and train some of the most talented young classical musicians across
+    several states in the United States. These projects reflect that shared process of learning,
+    interpretation, and musical expression.
+  </p>
+
+  <div class="music-grid music-grid--projects">
+    {% for item in site.data.music.projects %}
+      <article class="music-card music-card--project">
+        <a class="music-project__image" href="{{ item.video }}" aria-label="Watch {{ item.title }} on YouTube">
+          <img src="{{ item.image }}" alt="{{ item.image_alt }}" width="480" height="360" loading="lazy">
+          <span class="music-project__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+        </a>
+        <div class="music-card__body">
+          <p class="music-kicker">{{ item.subtitle }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+        <div class="music-card__links">
+          <a href="{{ item.video }}"><i class="fa-brands fa-youtube" aria-hidden="true"></i> Watch</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="music-section music-outreach reveal" aria-labelledby="music-outreach">
+  <header class="music-section__head">
+    <h2 id="music-outreach">Music Outreach &amp; Leadership</h2>
+  </header>
+
+  <p class="music-section__intro">
+    Alongside performing and teaching, I have been fortunate to have opportunities to build communities that
+    make Indian classical music accessible to students and create lasting spaces for participation.
+  </p>
+
+  <div class="music-outreach-grid">
+    <article class="music-outreach-card">
+      <span class="music-outreach-card__icon" aria-hidden="true">
+        <i class="fa-solid fa-building-columns"></i>
+      </span>
+      <p class="music-kicker">Founder · Carnatic Music Club · NIT Trichy</p>
+      <h3>Amruthavarshini</h3>
+      <p>
+        In 2006, with support from several faculty members, I founded Amruthavarshini at NIT Trichy, my
+        alma mater, as a dedicated Carnatic music club to bring together enthusiasts across campus.
+        Beginning with a Tyagaraja Aradhana, the initiative grew to include concerts and other campus
+        programs that introduced students to Carnatic music and its traditions. This student-led club
+        remains active today, two decades later.
+      </p>
+      <a
+        class="music-outreach-card__link"
+        href="https://www.nitt.edu/home/students/clubsnassocs/culturalsocieties/amruthavarshini/"
+      >
+        Visit Amruthavarshini <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
+    </article>
+
+    <article class="music-outreach-card">
+      <span class="music-outreach-card__icon" aria-hidden="true">
+        <i class="fa-solid fa-music"></i>
+      </span>
+      <p class="music-kicker">Student chapter president · Texas A&amp;M University</p>
+      <h3>SPIC MACAY at Texas A&amp;M</h3>
+      <p>
+        From 2009 to 2013, I led the student chapter of the Society for the Promotion of Indian Classical
+        Music And Culture Amongst Youth at Texas A&amp;M University, also my alma mater. In that role, I
+        organized concerts and lecture-demonstrations by leading classical musicians from India and created
+        opportunities for students to engage directly with these traditions.
+      </p>
+      <a
+        class="music-outreach-card__link"
+        href="https://newspaper.library.tamu.edu/lccn/sn84009780/2013-03-01/ed-1/seq-28.pdf"
+      >
+        Read the Texas A&amp;M interview <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
+    </article>
+  </div>
+</section>

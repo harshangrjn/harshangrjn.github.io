@@ -1,0 +1,5 @@
+<link rel="stylesheet" href="{{ '/assets/css/research-draft.css' | relative_url }}?v=7">
+<div id="research-map-source" hidden aria-hidden="true">
+  {% bibliography --group_by none --template bibmap %}
+</div>
+<script defer src="{{ '/assets/js/research-map.js' | relative_url | bust_file_cache }}"></script>

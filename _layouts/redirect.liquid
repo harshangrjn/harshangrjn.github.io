@@ -1,0 +1,15 @@
+<!doctype html>
+{%- comment -%} Instant redirect for URLs from the previous (Hugo) site. Set `redirect_to` in front matter. {%- endcomment -%}
+{%- assign target = page.redirect_to | relative_url -%}
+<html lang="{{ site.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting…</title>
+    <link rel="canonical" href="{{ target | absolute_url }}">
+    <meta name="robots" content="noindex">
+    <meta http-equiv="refresh" content="0; url={{ target }}">
+  </head>
+  <body>
+    <p>This page has moved to <a href="{{ target }}">{{ target | absolute_url }}</a>.</p>
+  </body>
+</html>

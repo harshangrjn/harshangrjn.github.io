@@ -1,0 +1,30 @@
+---
+# Local override of al_folio_core's assets/css/main.scss.
+# Identical to the theme's version, plus the site's own `_sass/_custom.scss` at the end.
+---
+@charset "utf-8";
+
+@use "sass:math";
+@use "sass:string";
+
+@use "variables" with (
+  $max-content-width: {{ site.max_width | default:  "930px" }}
+);
+
+@use "themes";
+@use "layout";
+
+@use "typography";
+@use "navbar";
+@use "footer";
+@use "blog";
+@use "publications";
+@use "components";
+@use "utilities";
+
+@use "tabs";
+@use "teachings";
+@use "typograms";
+
+// Site-specific design layer
+@use "custom";

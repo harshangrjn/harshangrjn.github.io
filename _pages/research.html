@@ -1,0 +1,153 @@
+---
+layout: hn-page
+title: Research
+permalink: /research/
+nav: true
+nav_order: 1
+heading: Research areas
+description: Research areas of Harsha Nagarajan — optimization and machine learning, optimization under uncertainty, resilient power grids, quantum computing, network design, and scientific computing.
+---
+
+<section class="research-intro reveal" aria-label="Research overview">
+  <div class="research-intro__copy">
+    <p>
+      My research develops mathematical programming formulations and algorithms for discrete, convex, and
+      nonconvex optimization, with a particular emphasis on global optimization. The data available for a
+      decision problem shape how I approach it. When data are plentiful, as in parametric problems solved
+      repeatedly with changing inputs, I use machine learning to accelerate rigorous optimization while
+      preserving its guarantees. When observations or operating conditions are uncertain, I use stochastic,
+      robust, and adversarial models. This methodological core connects three application areas: power systems,
+      networks and control, and quantum computing.
+    </p>
+    <p>
+      Across these areas, I focus on formulations and algorithms that retain physical fidelity and mathematical
+      guarantees while remaining practical on realistic systems, especially critical infrastructure, where
+      closely related problems must be re-solved as loads, forecasts, contingencies, and operating conditions
+      change. I release these methods as open-source software so that others can use and build on them. In the
+      diagram, each overlap marks where a methods contribution meets an application question.
+    </p>
+  </div>
+
+  {% include research-map-overview.liquid id='research' %}
+</section>
+
+<nav class="area-nav reveal" aria-label="Jump to a research area">
+  {% for area in site.data.research_areas %}
+    <a class="area-pill area-accent--{{ area.id }}" href="#{{ area.id }}">
+      {% include research-area-icon.liquid area=area class='research-area-icon-svg' %}
+      {{ area.short }}
+    </a>
+  {% endfor %}
+</nav>
+
+{% for area in site.data.research_areas %}
+  <section class="area-section area-accent--{{ area.id }} reveal" id="{{ area.id }}" aria-labelledby="{{ area.id }}-title">
+    <div class="area-head">
+      <span class="area-icon" aria-hidden="true">
+        {% include research-area-icon.liquid area=area class='research-area-icon-svg' %}
+      </span>
+      <div>
+        <p class="eyebrow">Area {{ forloop.index }} of {{ forloop.length }}</p>
+        <h2 id="{{ area.id }}-title" class="area-title">{{ area.title }}</h2>
+      </div>
+    </div>
+
+    {% if area.tracks %}
+      <div class="area-tracks">
+        {% for track in area.tracks %}
+          <article class="area-track" id="{{ track.id }}" aria-labelledby="{{ track.id }}-title">
+            <h3 id="{{ track.id }}-title" class="area-track-title">{{ track.title }}</h3>
+
+            <div class="area-body">
+              <div class="area-overview">{{ track.overview | markdownify }}</div>
+              {% if track.software %}
+                <aside class="area-aside">
+                  {% comment %}
+                    <h4 class="aside-title">Guiding questions</h4>
+                    <ul class="question-list">
+                      {% for q in track.questions %}
+                        <li>{{ q }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endcomment %}
+                  <h4 class="aside-title">Software</h4>
+                  <ul class="aside-software">
+                    {% for name in track.software %}
+                      {% assign sw = site.data.software | where: 'name', name | first %}
+                      {% if sw %}
+                        <li>
+                          <a href="{{ sw.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> {{ sw.name }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </aside>
+              {% endif %}
+            </div>
+
+            <h4 class="sub-title">Selected publications</h4>
+            <div class="publications">
+              {% bibliography --group_by none --query @*[featured~={{ track.id }}] %}
+            </div>
+
+            <details class="area-all">
+              <summary>
+                <span class="area-all-label">View all {% bibliography_count --query @*[areas~={{ track.id }}] %} publications in this track</span>
+                <span class="area-all-hint">newest first</span>
+              </summary>
+              <div class="publications">
+                {% bibliography --group_by none --query @*[areas~={{ track.id }}] %}
+              </div>
+            </details>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="area-body">
+        <div class="area-overview">{{ area.overview | markdownify }}</div>
+        {% if area.software %}
+          <aside class="area-aside">
+            {% comment %}
+              <h3 class="aside-title">Guiding questions</h3>
+              <ul class="question-list">
+                {% for q in area.questions %}
+                  <li>{{ q }}</li>
+                {% endfor %}
+              </ul>
+            {% endcomment %}
+            <h3 class="aside-title">Software</h3>
+            <ul class="aside-software">
+              {% for name in area.software %}
+                {% assign sw = site.data.software | where: 'name', name | first %}
+                {% if sw %}
+                  <li>
+                    <a href="{{ sw.github }}"><i class="fa-brands fa-github" aria-hidden="true"></i> {{ sw.name }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </aside>
+        {% endif %}
+      </div>
+
+      {% unless area.hide_selected %}
+        <h3 class="sub-title">Selected publications</h3>
+        <div class="publications">
+          {% bibliography --group_by none --query @*[featured~={{ area.id }}] %}
+        </div>
+      {% endunless %}
+
+      <details class="area-all">
+        <summary>
+          <span class="area-all-label">View all {% bibliography_count --query @*[areas~={{ area.id }}] %} publications in this area</span>
+          <span class="area-all-hint">newest first</span>
+        </summary>
+        <div class="publications">
+          {% bibliography --group_by none --query @*[areas~={{ area.id }}] %}
+        </div>
+      </details>
+    {% endif %}
+  </section>
+{% endfor %}
+
+{% include research-map-assets.liquid %}

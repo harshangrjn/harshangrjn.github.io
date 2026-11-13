@@ -1,0 +1,148 @@
+# Research areas shown on the Home and Research pages.
+#
+# - `id` must match the values used in the `areas` / `featured` fields of
+#   _bibliography/papers.bib. Do not change an id without updating the .bib file.
+# - Order here is the order shown on the site.
+# - `summary` is a one-line teaser; `overview` is the Research-page
+#   description (Markdown allowed). An area may instead define `tracks`.
+# - `software` lists names from _data/software.yml to cross-link.
+
+- id: optimization
+  title: Optimization & Machine Learning
+  short: Optimization & machine learning
+  icon: fa-solid fa-chart-line
+  summary: >
+    Global optimization, learning-accelerated algorithms, and open-source software
+    for rigorous mathematical programming at scale.
+  tracks:
+    - id: global
+      title: Global Optimization
+      overview: >
+        Global optimization provides the methodological core for solving difficult
+        nonconvex and mixed-integer nonlinear models with rigorous bounds. This work
+        develops adaptive partitioning, strong convex relaxations, and polyhedral and
+        convex-hull formulations that focus computational effort where it most improves
+        the global bound. The resulting algorithms support applications such as AC
+        optimal power flow and transmission switching.
+      questions:
+        - How can relaxations be strengthened only where they obstruct progress toward a global solution?
+        - Which formulations and partitioning strategies provide strong bounds without sacrificing scalability?
+      software: [Alpine.jl, Juniper.jl]
+    - id: learning
+      title: Learning-Accelerated Optimization
+      overview: >
+        Many optimization problems are solved repeatedly as loads, forecasts, and other
+        parameters change. This creates data that can be used to learn better search,
+        partitioning, and bound-tightening strategies while mathematical optimization
+        retains valid bounds and optimality guarantees. The work includes learning-
+        augmented and reinforcement-learning-guided partitioning, accelerated tightening
+        of AC optimal power flow relaxations, neural approximations for bilevel
+        adversarial problems, and statistical models of electricity demand. These
+        methods are developed alongside open-source optimization software, including
+        **Alpine.jl**.
+      questions:
+        - How can learning accelerate repeatedly solved optimization problems while retaining rigorous guarantees?
+        - Which learned strategies generalize across problem families and changing data regimes?
+      software: [Alpine.jl]
+
+- id: uncertainty
+  title: Power Systems Optimization Under Uncertainty
+  short: Optimization under uncertainty
+  icon_svg: wind-turbine
+  summary: >
+    Stochastic, chance-constrained, robust, and distributionally robust models that
+    let grids anticipate and withstand renewables variability and disruptions.
+  questions:
+    - How should generation be committed and dispatched when renewables, loads, and component failures are uncertain?
+    - How can grids be operated to withstand worst-case events such as geomagnetic disturbances or attacks?
+  overview: >
+    Grid operating conditions are uncertain: renewables vary, equipment fails, and
+    storms and attacks disrupt the system. To *anticipate* such conditions, this work
+    develops chance-constrained and decomposition-based stochastic unit commitment and
+    multi-stage stochastic optimal power flow under N-1 outages. To *withstand*
+    worst-case events, it builds transmission switching and distributionally robust
+    models for geomagnetic disturbances, robust renewable planning, bilevel
+    attacker–defender models, and probabilistic N-k failure identification. Related
+    work addresses electricity pricing, energy-storage arbitrage, and data-driven
+    models of demand.
+
+- id: resilience
+  title: Resilient Power Transmission & Distribution Grids
+  short: Resilient power grids
+  icon: fa-solid fa-bolt
+  summary: >
+    Planning, designing, and operating transmission grids, distribution systems,
+    and networked microgrids before, during, and after disruptions.
+  questions:
+    - How should transmission and distribution networks be designed to withstand disruptions?
+    - How should networked microgrids be designed, partitioned, and operated under uncertainty?
+  overview: >
+    Resilience spans both transmission and distribution systems. At the transmission
+    level, this work develops optimization models for resilient grid and topology design,
+    including comparisons of AC relaxations and DC approximations. At the distribution
+    level, it addresses resilient feeder expansion and the design, partitioning,
+    reconfiguration, operation, and black-start restoration of networked microgrids
+    under uncertainty, with the objective of restoring and serving as much critical load
+    as possible. The resulting software received a 2023 R&D 100 Award, was integrated
+    into NRECA's Open Modeling Framework, and was tested on a realistic Cobb EMC network.
+  software: [PowerModelsONM.jl]
+
+- id: networks
+  title: Networks, Control & Robotics
+  short: Networks, control & robotics
+  icon: fa-solid fa-diagram-project
+  summary: >
+    Spectral graph theory and mixed-integer optimization for robust networks,
+    from UAV and robot teams to power-grid topologies and vehicle platoons.
+  questions:
+    - How should networks be designed to maximize algebraic connectivity under resource constraints?
+    - How does network topology shape stability and disturbance propagation in dynamical systems?
+  overview: >
+    This line of work, which began with the doctoral research on robust communication
+    networks for unmanned aerial vehicles, uses spectral graph theory and mixed-integer
+    optimization to design networks that are robust by construction. It includes
+    formulations and algorithms for maximizing algebraic connectivity, topology design
+    for disturbance minimization and stability in power grids and manufacturing networks,
+    robustness in robot localization, and string stability of heterogeneous vehicle
+    platoons.
+  software: [LaplacianOpt.jl]
+
+- id: quantum
+  title: Quantum Computing
+  short: Quantum computing
+  icon_svg: quantum-circuit
+  hide_selected: true
+  summary: >
+    Optimization for quantum circuit design and hardware-aware encodings, together
+    with hybrid quantum–classical methods that accelerate classical algorithms.
+  questions:
+    - Can mixed-integer programming compile quantum circuits that are provably optimal?
+    - When can near-term quantum devices accelerate classical optimization algorithms?
+  overview: >
+    This work connects mathematical optimization and quantum computing in both
+    directions. Mixed-integer programming enables *provably optimal* quantum circuit
+    design, while hardware-aware encodings map constrained optimization problems
+    efficiently to quantum devices. In the other direction, hybrid quantum–classical
+    methods use quantum-generated candidate solutions within classical optimization
+    algorithms, where classical subproblems evaluate candidates, enforce feasibility,
+    and retain algorithmic guarantees. Related work benchmarks Ising processing units
+    using integer programming.
+  software: [QuantumCircuitOpt.jl]
+
+- id: science
+  title: Optimization & AI for Scientific Computing
+  short: Scientific computing
+  icon: fa-solid fa-laptop-code
+  hide_selected: true
+  summary: >
+    Optimization-based numerical methods and AI-driven workflows for problems in
+    computational physics, biology, and chemistry.
+  questions:
+    - How can optimization enforce physical principles in numerical simulation?
+    - How can optimization and agentic AI accelerate scientific discovery?
+  overview: >
+    The optimization methods developed here are not specific to energy. Early work used
+    constrained convex optimization methods to enforce maximum principles and
+    non-negativity in numerical solutions of diffusion equations on general computational
+    grids. More recent collaborations combine two-level optimization with agentic AI
+    workflows for molecule discovery and develop a universal research and scientific agent.

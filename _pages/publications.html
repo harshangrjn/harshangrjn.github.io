@@ -1,0 +1,61 @@
+---
+layout: hn-page
+title: Publications
+permalink: /publications/
+nav: true
+nav_order: 2
+page_class: page-publications
+heading: Publications
+lede: >
+  The complete list, newest first. Search by title, author, or venue, or filter by research area and
+  publication type.
+  <a class="pub-scholar-link" href="https://scholar.google.com/citations?user=mMQ8eowAAAAJ&hl=en"
+  aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
+description: Complete publication list of Harsha Nagarajan, searchable and filterable by research area.
+---
+
+<div class="pub-controls reveal" role="search" aria-label="Filter publications">
+  <div class="pub-search">
+    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    <label class="sr-only" for="pub-search-input">Search publications</label>
+    <input id="pub-search-input" type="search" placeholder="Search title, author, venue…" autocomplete="off" spellcheck="false">
+  </div>
+
+  <div class="filter-row" role="group" aria-label="Research area">
+    <span class="filter-label">Area</span>
+    <button type="button" class="filter-chip is-active" data-filter-area="all" aria-pressed="true">All</button>
+    {% for area in site.data.research_areas %}
+      <button
+        type="button"
+        class="filter-chip area-accent--{{ area.id }}"
+        data-filter-area="{{ area.id }}"
+        data-filter-members="{% if area.tracks %}{{ area.tracks | map: 'id' | join: ',' }}{% else %}{{ area.id }}{% endif %}"
+        aria-pressed="false"
+      >{{ area.short }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="filter-row" role="group" aria-label="Publication type">
+    <span class="filter-label">Type</span>
+    <button type="button" class="filter-chip is-active" data-filter-type="all" aria-pressed="true">All</button>
+    <button type="button" class="filter-chip" data-filter-type="journal" aria-pressed="false">Journal</button>
+    <button type="button" class="filter-chip" data-filter-type="conference" aria-pressed="false">Conference</button>
+    <button type="button" class="filter-chip" data-filter-type="review" aria-pressed="false">Under review</button>
+    <button type="button" class="filter-chip" data-filter-type="report" aria-pressed="false">Reports &amp; other</button>  </div>
+
+  <p class="pub-stats" aria-live="polite">
+    Showing <span id="pub-count">{% bibliography_count %}</span> of {% bibliography_count %} ·
+    {% bibliography_count --query @article[pubtype=journal] %} journal articles ·
+    {% bibliography_count --query @inproceedings %} conference papers ·
+    {% bibliography_count --query @*[pubtype=review] %} under review
+  </p>
+</div>
+
+<div class="publications pub-timeline" id="pub-timeline">
+  <h2 class="bibliography bibliography--review">Under review</h2>
+  {% bibliography --group_by none --query @*[pubtype=review] %}
+
+  {% bibliography --query @*[pubtype!=review] %}
+</div>
+
+<p class="pub-empty" id="pub-empty" hidden>No publications match these filters. <button type="button" class="link-button" id="pub-reset">Reset filters</button></p>

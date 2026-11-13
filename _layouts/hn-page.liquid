@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<div class="hn-page {{ page.page_class }}">
+  <header class="page-hero reveal">
+    {% if page.eyebrow %}
+      <p class="eyebrow">{{ page.eyebrow }}</p>
+    {% endif %}
+    <h1 class="page-title">{{ page.heading | default: page.title }}</h1>
+    {% if page.lede %}
+      <p class="page-lede">{{ page.lede }}</p>
+    {% endif %}
+  </header>
+
+  {{ content }}
+</div>
+<script defer src="{{ '/assets/js/site.js' | relative_url | bust_file_cache }}"></script>

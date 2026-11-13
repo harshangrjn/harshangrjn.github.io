@@ -1,0 +1,147 @@
+---
+---
+{%- comment -%}
+  Local override of al_folio_core's bib.liquid.
+  Renders one publication from _bibliography/papers.bib. The data-* attributes
+  drive the search and research-area filters on the Publications page.
+{%- endcomment -%}
+{%- assign areas_clean = entry.areas | remove: ' ' -%}
+{%- assign area_ids = areas_clean | split: ',' -%}
+{%- assign pubtype = entry.pubtype | default: 'journal' -%}
+{%- capture author_search -%}
+  {%- for author in entry.author_array -%}
+    {{ author.first }} {{ author.last }}
+    {%- if site.scholar.last_name contains author.last and site.scholar.first_name contains author.first -%}
+      {{ site.first_name }} {{ site.last_name }}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{% if page.permalink == '/publications/' and entry.key == 'guo2026tightening' %}
+  <span id="guo2025tightening" class="pub-anchor-alias" aria-hidden="true"></span>
+{% endif %}
+<article
+  class="pub"
+  {% if page.permalink == '/publications/' %}
+    id="{{ entry.key }}"
+  {% endif %}
+  data-areas="{{ areas_clean }}"
+  data-type="{{ pubtype }}"
+  data-year="{{ entry.year }}"
+  data-search-authors="{{ author_search | normalize_whitespace | escape }}"
+>
+  <div class="pub-badge" aria-hidden="true">
+    <span class="pub-abbr pub-abbr--{{ pubtype }}">{{ entry.abbr | default: '·' }}</span>
+  </div>
+
+  <div class="pub-body">
+    <div class="pub-title">
+      {%- if entry.doi -%}
+        <a href="https://doi.org/{{ entry.doi }}">{{ entry.title }}</a>
+      {%- elsif entry.arxiv -%}
+        <a href="https://arxiv.org/abs/{{ entry.arxiv }}">{{ entry.title }}</a>
+      {%- elsif entry.html -%}
+        <a href="{{ entry.html }}">{{ entry.title }}</a>
+      {%- else -%}
+        {{ entry.title }}
+      {%- endif -%}
+    </div>
+
+    <div class="pub-authors">
+      {%- for author in entry.author_array -%}
+        {%- assign given_names = author.first | replace: '-', ' ' | split: ' ' -%}
+        {%- capture author_initials -%}
+          {%- for given_name in given_names -%}
+            {{- given_name | slice: 0, 1 -}}.
+            {%- unless forloop.last %} {% endunless -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- assign is_self = false -%}
+        {%- if site.scholar.last_name contains author.last and site.scholar.first_name contains author.first -%}
+          {%- assign is_self = true -%}
+        {%- endif -%}
+        {%- if is_self -%}
+          <span class="pub-self">{{ author_initials }} {{ author.last }}</span>
+        {%- else -%}
+          {{ author_initials }} {{ author.last }}
+        {%- endif -%}
+        {%- unless forloop.last -%}, {% endunless -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="pub-venue">
+      {%- if entry.type == 'article' or entry.type == 'unpublished' -%}
+        <em>{{ entry.journal }}</em>
+      {%- elsif entry.type == 'inproceedings' or entry.type == 'incollection' -%}
+        <em>{{ entry.booktitle }}</em>
+      {%- elsif entry.type == 'techreport' -%}
+        <em>Technical report{% if entry.institution and entry.institution != 'arXiv preprint' %}, {{ entry.institution }}{% endif %}</em>
+      {%- endif -%}
+      {%- if entry.location -%}, {{ entry.location }}{%- endif -%}
+      {%- if pubtype != 'review' -%}
+        , <span class="pub-year">{{ entry.year }}</span>
+      {%- endif -%}
+    </div>
+
+    {%- if entry.status or entry.note or entry.award -%}
+      <div class="pub-meta">
+        {%- if entry.status -%}
+          <span class="pub-tag pub-tag--review"><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ entry.status }}</span>
+        {%- endif -%}
+        {%- if entry.award -%}
+          <span class="pub-tag pub-tag--award"><i class="fa-solid fa-award" aria-hidden="true"></i> {{ entry.award }}</span>
+        {%- endif -%}
+        {%- if entry.note -%}
+          <span class="pub-note">{{ entry.note }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="pub-links">
+      {%- if entry.doi -%}
+        <a class="pub-link" href="https://doi.org/{{ entry.doi }}">DOI</a>
+      {%- endif -%}
+      {%- if entry.arxiv -%}
+        <a class="pub-link" href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>
+      {%- endif -%}
+      {%- if entry.pdf -%}
+        {%- if entry.pdf contains '://' -%}
+          <a class="pub-link" href="{{ entry.pdf }}">PDF</a>
+        {%- else -%}
+          <a class="pub-link" href="{{ entry.pdf | relative_url }}">PDF</a>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if entry.html -%}
+        <a class="pub-link" href="{{ entry.html }}">Link</a>
+      {%- endif -%}
+      {%- if entry.code -%}
+        <a class="pub-link" href="{{ entry.code }}"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>
+      {%- endif -%}
+      {%- if entry.poster -%}
+        <a class="pub-link" href="{{ entry.poster | relative_url }}">Poster</a>
+      {%- endif -%}
+      {%- if entry.slides -%}
+        <a class="pub-link" href="{{ entry.slides }}">Slides</a>
+      {%- endif -%}
+      {%- if entry.video -%}
+        <a class="pub-link" href="{{ entry.video }}"><i class="fa-solid fa-play" aria-hidden="true"></i> Video</a>
+      {%- endif -%}
+      <button class="pub-link pub-cite-toggle" type="button" aria-expanded="false">Cite</button>
+
+      {%- if area_ids.size > 0 -%}
+        <span class="pub-areas">
+          {%- for aid in area_ids -%}
+            {%- assign area = site.data.research_areas | where: 'id', aid | first -%}
+            {%- if area -%}
+              <a class="area-chip area-chip--{{ aid }}" href="{{ '/research/' | relative_url }}#{{ aid }}" title="{{ area.title }}">{{ area.short }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </span>
+      {%- endif -%}
+    </div>
+
+    <div class="pub-bibtex" hidden>
+      <pre><code>{{ entry.bibtex | hideCustomBibtex | strip | escape }}</code></pre>
+      <button class="pub-copy" type="button">Copy BibTeX</button>
+    </div>
+  </div>
+</article>

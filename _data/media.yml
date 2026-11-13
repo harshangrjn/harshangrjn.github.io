@@ -1,0 +1,86 @@
+# Media coverage, rendered on /media/. Cards fill a three-column grid row by row in the
+# order written; the featured card spans two columns and sits last, at the bottom right.
+#
+#   date     Display date (e.g., "August 2023").
+#   outlet   Publication or organization that ran the story.
+#   kind     Short label shown next to the date (Award, Feature, Partnership, ...).
+#   title    Headline of the story; the whole card links to `url`.
+#   url      Primary link to the story. Local copies under /pdf/ are fine.
+#   summary  One sentence on what the story covers.
+#   area     Optional research-area id from _data/research_areas.yml; sets the card's colour.
+#   featured Optional; `true` makes the card two columns wide with a larger headline.
+#   links    Optional extra links: label, url, icon (Font Awesome class).
+
+- date: March 2021
+  outlet: The Texas A&M University System
+  kind: Partnership
+  title: Improving use of renewable energy sources in microgrids
+  url: https://nuclearsecurityoffice.tamus.edu/improving-use-of-renewable-energy-sources-in-microgrids/
+  summary: >-
+    A Los Alamos–Texas A&M Industrial and Systems Engineering collaboration on microgrids with
+    uncertain renewables, demand response, and energy markets.
+  area: resilience
+  links:
+    - label: Texas A&M Engineering
+      url: https://engineering.tamu.edu/news/2021/03/Gautam-receives-2020-21-Los-Alamos-National-Laboratory-Collaborative-Program-Award.html
+      icon: fa-solid fa-newspaper
+    - label: PDF
+      url: /pdf/LANL_collaborative_renewables.pdf
+      icon: fa-solid fa-file-pdf
+
+- date: September 2020
+  outlet: The Texas A&M University System
+  kind: Partnership
+  title: The Texas A&M University System and Los Alamos National Laboratory partner to design robust networks
+  url: https://nuclearsecurityoffice.tamus.edu/the-texas-am-university-system-and-los-alamos-national-laboratory-partner-to-design-robust-networks/
+  summary: >-
+    A Los Alamos–Texas A&M Mechanical Engineering collaboration on the robustness of complex
+    networks, such as power grids and multi-robot networks.
+  area: networks
+  links:
+    - label: PDF
+      url: /pdf/TAMU_LANL_article.pdf
+      icon: fa-solid fa-file-pdf
+
+- date: April 2020
+  outlet: Notices of the American Mathematical Society
+  kind: Feature
+  title: Early Career Paths at Los Alamos National Laboratory
+  url: https://www.ams.org/journals/notices/202004/rnoti-p515.pdf
+  summary: >-
+    Early-career scientists describe the problem-driven, team-based research environment at
+    Los Alamos.
+  links:
+    - label: PDF
+      url: /pdf/ams_earlycareer_article.pdf
+      icon: fa-solid fa-file-pdf
+
+- date: February 2019
+  outlet: 1663, Los Alamos Science and Technology Magazine
+  kind: Feature
+  title: Out of the Dark
+  url: /pdf/1663_article.pdf
+  summary: >-
+    How Los Alamos scientists work to keep the lights on with a modern, secure power grid.
+  area: resilience
+
+- date: August 2023
+  outlet: R&D World
+  kind: Award
+  featured: true
+  title: "PowerModelsONM: Optimizing Operations of Networked Microgrids for Resilience"
+  url: https://www.rdworldonline.com/rd-100-2023-winner/powermodelsonm-optimizing-operations-of-networked-microgrids-for-resilience/
+  summary: >-
+    Our team's open-source software for operating networked microgrids during extreme events
+    was named a winner of the 2023 R&D 100 Awards.
+  area: resilience
+  links:
+    - label: U.S. Department of Energy
+      url: https://www.energy.gov/oe/articles/microgrid-software-program-los-alamos-lab-honored
+      icon: fa-solid fa-newspaper
+    - label: Video
+      url: https://www.youtube.com/watch?v=XYRzs7BrY1I
+      icon: fa-brands fa-youtube
+    - label: Software
+      url: /software/#powermodelsonm-jl
+      icon: fa-solid fa-code

@@ -1,0 +1,20 @@
+# Contact links shown on the home page, contact section, and footer.
+
+email: harsha@lanl.gov
+
+links:
+  - label: Google Scholar
+    icon: ai ai-google-scholar
+    url: https://scholar.google.com/citations?user=mMQ8eowAAAAJ&hl=en
+  - label: ORCID
+    icon: fa-brands fa-orcid
+    url: https://orcid.org/0000-0003-4550-1100
+  - label: GitHub
+    icon: fa-brands fa-github
+    url: https://github.com/harshangrjn
+  - label: LinkedIn
+    icon: fa-brands fa-linkedin
+    url: https://www.linkedin.com/in/harsha-nagarajan-60667764/
+  - label: X / Twitter
+    icon: fa-brands fa-x-twitter
+    url: https://twitter.com/NagarajanHarsha

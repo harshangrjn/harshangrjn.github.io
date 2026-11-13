@@ -1,0 +1,108 @@
+performances:
+  - title: Saramaina 2.0
+    subtitle: Raga Behag
+    description: >
+      A contemporary presentation of Swati Tirunal's varnam, with Harsha Nagarajan,
+      Akshay Anantapadmanabhan, Mahesh Raghvan, and IndianRaga.
+    spotify: https://open.spotify.com/track/6vRCXFxtxch2aYw4jace7z?si=50cd6b58f0f14f41&nd=1&dlsi=3462bb2df0f944be
+    spotify_embed: https://open.spotify.com/embed/track/6vRCXFxtxch2aYw4jace7z?utm_source=generator
+    youtube: https://www.youtube.com/watch?v=0E8FTMM8mxQ
+    tidal: https://tidal.com/track/319932931
+
+  - title: Sunsets
+    subtitle: Ragas Hamsadhwani and Pantuvarali
+    description: >
+      An IndianRaga Fellowship collaboration exploring memory, separation, and resolution
+      through Carnatic and Hindustani musical ideas.
+    youtube: https://www.youtube.com/watch?v=WCGAl7Zkj_U
+    youtube_id: WCGAl7Zkj_U
+    spotify: https://open.spotify.com/album/5Aggho5oFBIJolsuJKke8K
+
+  - title: Shanthakaram in the Swiss Alps
+    subtitle: Music and nature
+    description: >
+      To me, music and nature are inseparable. Hiking in the Swiss Alps inspired this
+      recording, shaped by the stillness and scale of the landscape.
+    youtube: https://www.youtube.com/watch?v=j3x30BDbUsg
+    youtube_id: j3x30BDbUsg
+
+projects:
+  - title: Subrahmanya Bhujangam
+    subtitle: San Jose Raga Labs · 2017
+    description: >
+      Ten verses from Adi Shankaracharya's hymn, set by Harsha Nagarajan in ten ragas
+      — Hamsadhwani, Hindolam, Devamanohari, Vasantha, Shanmukhapriya, Purna Chandrika,
+      Abhogi, Arabhi, Desh, and Sindubhairavi.
+    image: https://i.ytimg.com/vi/IWi2AK33l_8/hqdefault.jpg
+    image_alt: Still from the Subrahmanya Bhujangam performance by San Jose Raga Labs
+    video: https://www.youtube.com/watch?v=IWi2AK33l_8
+  - title: Bruhi Mukundethi
+    subtitle: IndianRaga Chicago Labs · 2015
+    description: >
+      Harsha Nagarajan's ragamalika setting in Kurinji, Kapi, Nagaswarali, and Hamsanandi,
+      presented as a tribute to Smt. M. S. Subbulakshmi.
+    image: https://i.ytimg.com/vi/-Y6Z54jkMIg/hqdefault.jpg
+    image_alt: Still from the Bruhi Mukundethi performance by IndianRaga Chicago Labs
+    video: https://www.youtube.com/watch?v=-Y6Z54jkMIg
+
+  - title: Baro Krishnayya
+    subtitle: San Diego Raga Labs
+    description: >
+      A San Diego Raga Labs ensemble presentation of the devotional composition
+      Baro Krishnayya.
+    image: https://i.ytimg.com/vi/Mji0N6cXnjA/hqdefault.jpg
+    image_alt: Still from the Baro Krishnayya performance by San Diego Raga Labs
+    video: https://www.youtube.com/watch?v=Mji0N6cXnjA
+
+  - title: Sharada Bhujangam
+    subtitle: San Jose Raga Labs
+    description: >
+      A San Jose Raga Labs ensemble presentation of Sharada Bhujangam.
+    image: https://i.ytimg.com/vi/4MOYlJMPAEY/hqdefault.jpg
+    image_alt: Still from the Sharada Bhujangam performance by San Jose Raga Labs
+    video: https://www.youtube.com/watch?v=4MOYlJMPAEY
+
+  - title: Ragam Thanam Pallavi in Kanada
+    subtitle: Chicago Raga Labs
+    description: >
+      A Chicago Raga Labs presentation of the expansive Carnatic improvisational form
+      Ragam Thanam Pallavi in raga Kanada.
+    image: https://i.ytimg.com/vi/NtYvdjra07w/hqdefault.jpg
+    image_alt: Still from the Ragam Thanam Pallavi in Kanada performance by Chicago Raga Labs
+    video: https://www.youtube.com/watch?v=NtYvdjra07w
+
+  - title: Charukeshis
+    subtitle: San Jose Collaborative Labs
+    description: >
+      A collaborative San Jose Raga Labs interpretation centered on raga Charukeshi.
+    image: https://i.ytimg.com/vi/dbwbQs0Jcxs/hqdefault.jpg
+    image_alt: Still from the Charukeshis performance by San Jose Collaborative Labs
+    video: https://www.youtube.com/watch?v=dbwbQs0Jcxs
+
+  - title: Irakkam Varaamal
+    subtitle: IndianRaga San Jose Labs
+    description: >
+      An ensemble presentation of Gopalakrishna Bharati's Tamil composition in raga Behag,
+      an appeal to Nataraja for compassion.
+    image: https://i.ytimg.com/vi/158x9LrY9DQ/hqdefault.jpg
+    image_alt: Still from the Irakkam Varaamal performance by IndianRaga San Jose Labs
+    video: https://www.youtube.com/watch?v=158x9LrY9DQ
+
+  - title: Ode to Krishna
+    subtitle: IndianRaga Boston Labs
+    description: >
+      Harsha Nagarajan's arrangement unites Swagatham Krishna in raga Mohanam with the
+      Meera bhajan Chalo Man Ganga Jamuna Teer in raga Bhupali.
+    image: https://i.ytimg.com/vi/5QnNAikNHnQ/hqdefault.jpg
+    image_alt: Still from the Ode to Krishna performance by IndianRaga Boston Labs
+    video: https://www.youtube.com/watch?v=5QnNAikNHnQ
+
+  - title: Lalitha Lavanga
+    subtitle: Raga Labs · Intercity
+    description: >
+      Jayadeva's third Ashtapadi from the Gita Govinda, evoking spring in Brindavana and
+      devotion to Krishna, set as a ragamalika by Harsha Nagarajan in Vasantha, Mohanam,
+      Vakulabharanam, Brindavani, and Hamir Kalyani.
+    image: https://i.ytimg.com/vi/uoz_s5ZEwmM/hqdefault.jpg
+    image_alt: Still from the Lalitha Lavanga performance by Intercity Raga Labs
+    video: https://www.youtube.com/watch?v=uoz_s5ZEwmM

@@ -1,0 +1,122 @@
+# Group page (/group/). All entries are taken from the CV.
+# Each section is shown as a one-per-line list, in the order written here (most recent first).
+# `note` is optional and appears in muted text after the details (Markdown links allowed).
+# Profile link (optional): give `scholar` (preferred), `linkedin`, or `researchgate` as a full URL.
+# The name links to the first one present, in that order.
+
+current:
+  - heading: Graduate Researchers
+    people:
+      - name: Dekang Meng
+        detail: Georgia Tech, Fall 2024 – present
+        scholar: https://scholar.google.com/citations?user=WlX783MAAAAJ
+      - name: Rosemary Barrass
+        detail: Georgia Tech, Summer 2024 – present
+        scholar: https://scholar.google.com/citations?user=---xI1EAAAAJ
+      - name: Young-Ho Cho
+        detail: UT Austin, Summer 2024 – present
+        scholar: https://scholar.google.com/citations?user=7Ai5gccAAAAJ
+      - name: Rohit Dube
+        detail: Texas A&M University, Spring 2023 – present
+        scholar: https://scholar.google.com/citations?user=fnoX77wAAAAJ
+
+former:
+  - heading: Postdoctoral Researchers
+    people:
+      - name: Dr. Rohit Kannan
+        detail: 2021 – 2023
+        note: CNLS Postdoctoral Fellow; deterministic global optimization and learning for nonconvex optimization
+        scholar: https://scholar.google.com/citations?user=eC9xQAsAAAAJ
+      - name: Dr. Kshitij Girigoudar
+        detail: 2022 – 2023
+        note: Robust optimization in unbalanced distribution grids; co-mentor
+        scholar: https://scholar.google.com/citations?user=jHaVx0oAAAAJ
+      - name: Dr. Haoxiang Yang
+        detail: 2019 – 2021
+        note: CNLS Postdoctoral Fellow; optimal power flow in distribution networks under stochastic disruptions
+        scholar: https://scholar.google.com/citations?user=BYw7iCIAAAAJ
+  - heading: Graduate Researchers
+    people:
+      - name: Rylan Malarchick
+        detail: Embry-Riddle Aeronautical University, Summer 2026
+        # note: "[QCSS](https://www.lanl.gov/engage/collaboration/internships/summer-schools/quantumschool) Summer Fellow"
+        scholar: https://scholar.google.com/citations?user=BCh7qVkAAAAJ
+      - name: Rie Huntington
+        detail: University of Pittsburgh, Summer 2026
+        note: "[CNLS](https://cnls.lanl.gov/External/student_program.php) Summer Fellow"
+        linkedin: https://www.linkedin.com/in/rie-huntington-870b95140/
+      - name: Irfan Ullah
+        detail: Texas A&M University, Spring 2024 – 2026
+        scholar: https://scholar.google.com/citations?user=uVUWcoUAAAAJ
+      - name: Agustin Castellano
+        detail: Johns Hopkins University, Summer 2025
+        scholar: https://scholar.google.com/citations?user=wkgAqeUAAAAJ
+      - name: Sumin Kang
+        detail: Virginia Tech, Spring 2025
+        note: NSF Non-Academic Research Internship
+        scholar: https://scholar.google.com/citations?user=G7kVQqwAAAAJ
+      - name: Hannah Moring
+        detail: University of Michigan, 2023 – 2025
+        scholar: https://scholar.google.com/citations?user=dFhLAE0AAAAJ
+      - name: Duong Thuy Anh Nguyen
+        detail: Arizona State University, Fall 2024
+        scholar: https://scholar.google.com/citations?user=26qnIlYAAAAJ
+      - name: Fatih Cengil
+        detail: University of Arkansas, 2021 – 2024
+        scholar: https://scholar.google.com/citations?user=RGsYd-EAAAAJ
+      - name: Neelkamal Somisetty
+        detail: Texas A&M University, 2021 – 2024
+        scholar: https://scholar.google.com/citations?user=E1cjmCUAAAAJ
+      - name: Erin George
+        detail: UCLA, 2023
+        note: "[Applied ML](https://www.lanl.gov/engage/collaboration/internships/summer-schools/advancing-machine-learning-fellowship) Summer Fellow"
+        scholar: https://scholar.google.com/citations?user=lYoQNPcAAAAJ
+      - name: Zhirui Hu
+        detail: George Mason University, 2023
+        # note: "[QCSS](https://www.lanl.gov/engage/collaboration/internships/summer-schools/quantumschool) Summer Fellow"
+        scholar: https://scholar.google.com/citations?user=N6JrW54AAAAJ
+      - name: Mithun Goutham
+        detail: Ohio State University, Summer 2022
+        note: "[CNLS](https://cnls.lanl.gov/External/student_program.php) Summer Fellow"
+        scholar: https://scholar.google.com/citations?user=r-3qgeoAAAAJ
+      - name: Zsolt Szabo
+        detail: Macquarie University, 2022
+        # note: "[QCSS](https://www.lanl.gov/engage/collaboration/internships/summer-schools/quantumschool) Summer Fellow"
+        linkedin: https://www.linkedin.com/in/szabino-mrszabo/
+      - name: Elena Henderson
+        detail: Southern Methodist University, 2021 – 2022
+        researchgate: https://www.researchgate.net/profile/Elena-Henderson-2
+      - name: Owen Lockwood
+        detail: Rensselaer Polytechnic Institute, 2021
+        # note: "[QCSS](https://www.lanl.gov/engage/collaboration/internships/summer-schools/quantumschool) Summer Fellow"
+        scholar: https://scholar.google.com/citations?user=RdHbqaoAAAAJ
+      - name: Cheng Guo
+        detail: University of Toronto, 2020 – 2021
+        scholar: https://scholar.google.com/citations?user=fdbGFkAAAAAJ
+      - name: Minseok Ryu
+        detail: University of Michigan, 2019
+        scholar: https://scholar.google.com/citations?user=2tSq4PMAAAAJ
+      - name: Manuel Garcia
+        detail: UT Austin, 2018
+        scholar: https://scholar.google.com/citations?user=uOxbq4cAAAAJ
+      - name: Siddharth Bhela
+        detail: Virginia Tech, 2018
+        scholar: https://scholar.google.com/citations?user=xR6U2HIAAAAJ
+      - name: Site Wang
+        detail: Clemson University, 2016 – 2018
+        scholar: https://scholar.google.com/citations?user=GvARbsoAAAAJ
+      - name: Saikrishna K. Hari
+        detail: Texas A&M University, 2017
+        scholar: https://scholar.google.com/citations?user=uC6TGvEAAAAJ
+      - name: Ole Kröger
+        detail: Heidelberg University, 2017
+        scholar: https://scholar.google.com/citations?user=pWKzzjoAAAAJ
+      - name: Mowen Lu
+        detail: Clemson University, 2015 – 2017
+        linkedin: https://www.linkedin.com/in/mowen-lu-69838775/
+      - name: S. Chalil Madathil
+        detail: Clemson University, 2015 – 2017
+        scholar: https://scholar.google.com/citations?user=j6KOCSMAAAAJ
+      - name: Fei Wu
+        detail: Ohio State University, 2016
+        scholar: https://scholar.google.com/citations?user=Roc9r90AAAAJ

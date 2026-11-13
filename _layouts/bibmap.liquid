@@ -1,0 +1,15 @@
+---
+---
+{%- comment -%}
+  Minimal publication record used by the experimental research maps.
+  The visible publication rendering remains in _layouts/bib.liquid.
+{%- endcomment -%}
+{%- assign areas_clean = entry.areas | remove: ' ' -%}
+<span
+  class="research-map-entry"
+  data-key="{{ entry.key | escape }}"
+  data-title="{{ entry.title | strip_html | escape }}"
+  data-year="{{ entry.year | escape }}"
+  data-areas="{{ areas_clean | escape }}"
+  data-url="{{ '/publications/' | relative_url }}#{{ entry.key | escape }}"
+></span>

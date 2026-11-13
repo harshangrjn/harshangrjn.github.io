@@ -1,0 +1,36 @@
+---
+layout: hn-page
+title: Media
+permalink: /media/
+nav: true
+nav_order: 6
+page_class: page-media
+heading: Media coverage
+description: Media coverage of research by Harsha Nagarajan at Los Alamos National Laboratory.
+---
+
+<div class="media-collage">
+  {%- for m in site.data.media %}
+    {%- assign m_external = m.url | slice: 0, 4 %}
+    <article class="media-card reveal{% if m.featured %} media-card--featured{% endif %}{% if m.area %} area-accent--{{ m.area }}{% endif %}">
+      <p class="media-outlet">{{ m.outlet }}</p>
+      <h2 class="media-title">
+        <a class="media-card-link" href="{{ m.url | relative_url }}"{% if m_external == 'http' %} target="_blank" rel="noopener"{% endif %}>{{ m.title }}</a>
+      </h2>
+      <p class="media-summary">{{ m.summary }}</p>
+      <p class="media-meta">
+        <span class="media-date">{{ m.date }}</span>
+        {%- if m.kind %}<span class="media-kind">{{ m.kind }}</span>{% endif %}
+        <span class="media-arrow" aria-hidden="true">&#8599;</span>
+      </p>
+      {%- if m.links.size > 0 %}
+        <p class="media-links">
+          {%- for link in m.links %}
+            {%- assign link_external = link.url | slice: 0, 4 %}
+            <a href="{{ link.url | relative_url }}"{% if link_external == 'http' %} target="_blank" rel="noopener"{% endif %}><i class="{{ link.icon }}" aria-hidden="true"></i> {{ link.label }}</a>
+          {%- endfor %}
+        </p>
+      {%- endif %}
+    </article>
+  {%- endfor %}
+</div>
