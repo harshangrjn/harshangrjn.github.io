@@ -105,7 +105,7 @@ hidden from the BibTeX copied by visitors.
 
 ## Local preview
 
-The deployment workflow uses Ruby 3.3.5, Node 20, and the dependencies locked in
+The deployment workflow uses Ruby 3.3, Node 20, and the dependencies locked in
 `Gemfile.lock` and `package-lock.json`.
 
 For the first local setup:
