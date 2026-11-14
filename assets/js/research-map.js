@@ -47,8 +47,8 @@
         lx: 360,
         ly: 85,
       },
-      { key: "power", label: "Power systems", sublabel: "planning · operations · resilience", x: 210, y: 325, r: 165, lx: 125, ly: 510 },
-      { key: "quantum", label: "Quantum computing", x: 510, y: 325, r: 165, lx: 595, ly: 510 },
+      { key: "power", label: "Power systems", sublabel: "planning · operations · resilience", x: 210, y: 300, r: 165, lx: 125, ly: 510 },
+      { key: "quantum", label: "Quantum computing", x: 510, y: 300, r: 165, lx: 595, ly: 510 },
       { key: "networks", label: "Networks & Control", x: 360, y: 475, r: 115, lx: 360, ly: 625 },
     ],
   };
@@ -436,22 +436,7 @@
 
     var minimum = config.dotRadius * 2 + (isOverview ? 10 : 5);
     for (var iteration = 0; iteration < 220; iteration++) {
-      for (var i = 0; i < points.length; i++) {
-        for (var j = i + 1; j < points.length; j++) {
-          var dx = points[j].x - points[i].x;
-          var dy = points[j].y - points[i].y;
-          var distance = Math.sqrt(dx * dx + dy * dy) || 0.01;
-          if (distance < minimum) {
-            var push = (minimum - distance) * 0.52;
-            var ux = dx / distance;
-            var uy = dy / distance;
-            points[i].x -= ux * push;
-            points[i].y -= uy * push;
-            points[j].x += ux * push;
-            points[j].y += uy * push;
-          }
-        }
-      }
+      separatePoints(points, minimum);
       points.forEach(function (point) {
         point.x += (point.baseX - point.x) * 0.012;
         point.y += (point.baseY - point.y) * 0.012;
@@ -462,14 +447,35 @@
       });
     }
 
-    for (var pass = 0; pass < 6; pass++) {
+    for (var pass = 0; pass < 80; pass++) {
+      separatePoints(points, minimum);
       points.forEach(function (point) {
         constrainToFields(point, fieldByKey, config);
         separateFromFieldBoundaries(point, fieldByKey, config);
       });
     }
+    separatePoints(points, minimum);
 
     return points;
+  }
+
+  function separatePoints(points, minimum) {
+    for (var i = 0; i < points.length; i++) {
+      for (var j = i + 1; j < points.length; j++) {
+        var dx = points[j].x - points[i].x;
+        var dy = points[j].y - points[i].y;
+        var distance = Math.sqrt(dx * dx + dy * dy) || 0.01;
+        if (distance < minimum) {
+          var push = (minimum - distance) * 0.52;
+          var ux = dx / distance;
+          var uy = dy / distance;
+          points[i].x -= ux * push;
+          points[i].y -= uy * push;
+          points[j].x += ux * push;
+          points[j].y += uy * push;
+        }
+      }
+    }
   }
 
   function overviewAnchor(keys, scores) {
@@ -479,18 +485,18 @@
     if (!memberships.length) memberships = [dominantField(scores)];
     var anchors = {
       optimization: { x: 360, y: 195 },
-      power: { x: 145, y: 330 },
-      quantum: { x: 600, y: 330 },
+      power: { x: 145, y: 300 },
+      quantum: { x: 600, y: 300 },
       networks: { x: 360, y: 525 },
-      "optimization|power": { x: 270, y: 290 },
-      "optimization|quantum": { x: 450, y: 290 },
+      "optimization|power": { x: 270, y: 275 },
+      "optimization|quantum": { x: 450, y: 275 },
       "optimization|networks": { x: 360, y: 455 },
-      "power|networks": { x: 285, y: 430 },
-      "quantum|networks": { x: 435, y: 430 },
-      "optimization|power|quantum": { x: 360, y: 325 },
-      "optimization|power|networks": { x: 290, y: 420 },
-      "optimization|quantum|networks": { x: 430, y: 420 },
-      "optimization|power|quantum|networks": { x: 360, y: 410 },
+      "power|networks": { x: 280, y: 410 },
+      "quantum|networks": { x: 440, y: 410 },
+      "optimization|power|quantum": { x: 360, y: 315 },
+      "optimization|power|networks": { x: 290, y: 405 },
+      "optimization|quantum|networks": { x: 430, y: 405 },
+      "optimization|power|quantum|networks": { x: 360, y: 365 },
     };
     return anchors[memberships.join("|")] || { x: 360, y: 330 };
   }
