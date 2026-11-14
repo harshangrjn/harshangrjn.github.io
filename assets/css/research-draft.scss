@@ -253,7 +253,7 @@ html[data-theme="dark"] .research-map {
 
 .research-map-tooltip.is-pinned {
   padding: 0;
-  border-color: var(--hn-accent);
+  border-color: var(--tooltip-color, var(--hn-accent));
   pointer-events: auto;
 }
 

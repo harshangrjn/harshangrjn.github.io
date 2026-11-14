@@ -348,7 +348,7 @@
         cy: point.y.toFixed(2),
         r: isHomeOverview ? config.dotRadius + 1.1 : config.dotRadius,
       });
-      dot.style.setProperty(
+      link.style.setProperty(
         "--dot-color",
         isOverview
           ? pillarColors[dominant]
@@ -568,6 +568,7 @@
     var dotRect = link.getBoundingClientRect();
     var title = document.createElement("strong");
     var meta = document.createElement("span");
+    tooltip.style.setProperty("--tooltip-color", link.style.getPropertyValue("--dot-color"));
     title.textContent = paper.title;
     meta.textContent = paper.year + (isPinned ? " · View publication" : " · Select dot for details");
     tooltip.classList.toggle("is-pinned", isPinned);

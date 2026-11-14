@@ -30,5 +30,7 @@ module.exports = {
     "is-target",
     "is-copied",
     "is-active",
+    // Generated at runtime by assets/js/research-map.js.
+    "research-map-field--optimization",
   ],
 };
