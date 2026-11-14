@@ -19,7 +19,7 @@ research_intro: >
   systems, networks and control, and quantum computing.
 
 # How many items from _data/updates.yml to show
-updates_limit: 6
+updates_limit: 7
 ---
 
 I am a Staff Scientist in the [Applied Mathematics and Plasma Physics group (T-5)](https://www.lanl.gov/engage/organizations/aldsct/theoretical/ampp) of the Theoretical Division at [Los Alamos National Laboratory](https://www.lanl.gov) and a member of the [Advanced Network Science Initiative](https://lanl-ansi.github.io).

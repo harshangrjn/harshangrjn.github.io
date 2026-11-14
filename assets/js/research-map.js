@@ -264,7 +264,7 @@
       var labelX = field.lx;
       var labelY = field.ly;
       if (isOverview && map.classList.contains("research-map--home")) {
-        if (field.key === "power") labelX = 75;
+        if (field.key === "power") labelX = 150;
         if (field.key === "quantum") {
           labelX = 618;
           labelY = 525;
