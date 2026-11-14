@@ -2508,7 +2508,7 @@ a.people-name {
   }
 
   .music-quote__source-detail {
-    color: var(--hn-muted);
+    color: inherit;
     font-family: var(--hn-mono);
     font-size: 0.63rem;
     font-weight: 500;

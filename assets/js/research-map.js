@@ -47,7 +47,17 @@
         lx: 360,
         ly: 85,
       },
-      { key: "power", label: "Power systems", sublabel: "planning · operations · resilience", x: 210, y: 300, r: 165, lx: 125, ly: 510 },
+      {
+        key: "power",
+        label: "Power systems",
+        sublabel: "planning · operations",
+        sublabel2: "resilience",
+        x: 210,
+        y: 300,
+        r: 165,
+        lx: 125,
+        ly: 510,
+      },
       { key: "quantum", label: "Quantum computing", x: 510, y: 300, r: 165, lx: 595, ly: 510 },
       { key: "networks", label: "Networks & Control", x: 360, y: 475, r: 115, lx: 360, ly: 625 },
     ],
@@ -264,7 +274,6 @@
       var labelX = field.lx;
       var labelY = field.ly;
       if (isOverview && map.classList.contains("research-map--home")) {
-        if (field.key === "power") labelX = 150;
         if (field.key === "quantum") {
           labelX = 618;
           labelY = 525;
@@ -313,7 +322,15 @@
           "data-field": field.key,
         });
         sublabel.style.setProperty("--field-color", color);
-        sublabel.textContent = field.sublabel;
+        if (field.sublabel2) {
+          var sublabelLine1 = svgEl("tspan", { x: labelX, dy: "0" });
+          var sublabelLine2 = svgEl("tspan", { x: labelX, dy: "1.2em" });
+          sublabelLine1.textContent = field.sublabel;
+          sublabelLine2.textContent = field.sublabel2;
+          sublabel.append(sublabelLine1, sublabelLine2);
+        } else {
+          sublabel.textContent = field.sublabel;
+        }
         fieldLayer.appendChild(sublabel);
       }
     });
