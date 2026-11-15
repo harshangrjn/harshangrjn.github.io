@@ -83,8 +83,15 @@ pdf = {/pdf/filename.pdf}
 ```
 
 For a paper under review, use `pubtype = {review}` and a `status` field such as
-`status = {Under review since March 2027}`. Once accepted, change `pubtype` to
-the appropriate final type and remove `status`.
+`status = {Under review since March 2027}`. Do not include the target journal or
+conference until the paper is accepted.
+
+- If the manuscript is on arXiv, use `@article`, keep the custom `arxiv` field for
+  the website link, and add the corresponding arXiv `url` for copied BibTeX.
+- If there is no public preprint, use `@unpublished` with
+  `note = {Unpublished manuscript}`.
+- Once accepted, change the entry to the appropriate publication type, add the
+  journal or proceedings metadata, and remove `status`.
 
 Custom website fields such as `areas`, `featured`, `pubtype`, and `status` are
 hidden from the BibTeX copied by visitors.

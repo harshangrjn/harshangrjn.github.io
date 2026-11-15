@@ -869,12 +869,21 @@ progress#progress::-moz-progress-bar {
     border-color: color-mix(in srgb, var(--pillar) 42%, var(--hn-border));
     box-shadow: var(--hn-shadow-hover);
   }
+}
 
-  > p {
-    margin: 0.7rem 0 0.9rem;
-    color: var(--hn-muted);
-    font-size: 0.82rem;
-    line-height: 1.55;
+.home-pillar__points {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1rem;
+  color: var(--hn-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+
+  li + li {
+    margin-top: 0.38rem;
+  }
+
+  li::marker {
+    color: var(--pillar);
   }
 }
 
@@ -1122,6 +1131,7 @@ progress#progress::-moz-progress-bar {
 
     i {
       width: 1.2rem;
+      font-size: 1.1rem;
       text-align: center;
       color: var(--hn-muted);
     }

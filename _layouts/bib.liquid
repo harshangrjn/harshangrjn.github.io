@@ -69,8 +69,12 @@
     </div>
 
     <div class="pub-venue">
-      {%- if entry.type == 'article' or entry.type == 'unpublished' -%}
+      {%- if pubtype == 'review' and entry.arxiv -%}
+        <em>arXiv preprint</em>
+      {%- elsif entry.type == 'article' -%}
         <em>{{ entry.journal }}</em>
+      {%- elsif entry.type == 'unpublished' -%}
+        <em>{{ entry.note | default: 'Unpublished manuscript' }}</em>
       {%- elsif entry.type == 'inproceedings' or entry.type == 'incollection' -%}
         <em>{{ entry.booktitle }}</em>
       {%- elsif entry.type == 'techreport' -%}
@@ -90,7 +94,7 @@
         {%- if entry.award -%}
           <span class="pub-tag pub-tag--award"><i class="fa-solid fa-award" aria-hidden="true"></i> {{ entry.award }}</span>
         {%- endif -%}
-        {%- if entry.note -%}
+        {%- if entry.note and entry.type != 'unpublished' -%}
           <span class="pub-note">{{ entry.note }}</span>
         {%- endif -%}
       </div>
