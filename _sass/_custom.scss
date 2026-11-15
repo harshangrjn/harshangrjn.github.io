@@ -872,18 +872,27 @@ progress#progress::-moz-progress-bar {
 }
 
 .home-pillar__points {
-  margin: 0.75rem 0 1rem;
-  padding-left: 1rem;
+  margin: 0.7rem 0 0.9rem;
+  padding: 0;
+  list-style: none;
   color: var(--hn-muted);
-  font-size: 0.8rem;
-  line-height: 1.45;
+  font-size: 0.76rem;
+  line-height: 1.4;
 
-  li + li {
-    margin-top: 0.38rem;
+  li {
+    position: relative;
+    padding-left: 0.7rem;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--pillar);
+    }
   }
 
-  li::marker {
-    color: var(--pillar);
+  li + li {
+    margin-top: 0.3rem;
   }
 }
 
