@@ -872,16 +872,16 @@ progress#progress::-moz-progress-bar {
 }
 
 .home-pillar__points {
-  margin: 0.7rem 0 0.9rem;
+  margin: 0.7rem 0 0.9rem -0.6rem;
   padding: 0;
   list-style: none;
   color: var(--hn-muted);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   line-height: 1.4;
 
   li {
     position: relative;
-    padding-left: 0.7rem;
+    padding-left: 0.6rem;
 
     &::before {
       content: "•";
@@ -916,11 +916,12 @@ progress#progress::-moz-progress-bar {
   h3 {
     margin: 0;
     font-size: 1rem;
+    font-weight: 700;
     line-height: 1.28;
   }
 
   a {
-    color: var(--hn-text);
+    color: var(--pillar);
   }
 }
 
