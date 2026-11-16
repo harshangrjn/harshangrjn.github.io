@@ -89,7 +89,7 @@
 
 - id: networks
   title: Networks, Control & Robotics
-  short: Networks, control & robotics
+  short: Networks and Control
   icon: fa-solid fa-diagram-project
   summary: >
     Spectral graph theory and mixed-integer optimization for robust networks,
