@@ -341,6 +341,7 @@ filtered_bibtex_keywords:
     code,
     cvid,
     dimensions,
+    display_note,
     eprint,
     featured,
     google_scholar_id,

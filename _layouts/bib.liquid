@@ -86,7 +86,8 @@
       {%- endif -%}
     </div>
 
-    {%- if entry.status or entry.note or entry.award -%}
+    {%- assign publication_note = entry.display_note | default: entry.note -%}
+    {%- if entry.status or publication_note or entry.award -%}
       <div class="pub-meta">
         {%- if entry.status -%}
           <span class="pub-tag pub-tag--review"><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ entry.status }}</span>
@@ -94,8 +95,8 @@
         {%- if entry.award -%}
           <span class="pub-tag pub-tag--award"><i class="fa-solid fa-award" aria-hidden="true"></i> {{ entry.award }}</span>
         {%- endif -%}
-        {%- if entry.note and entry.type != 'unpublished' -%}
-          <span class="pub-note">{{ entry.note }}</span>
+        {%- if publication_note and entry.type != 'unpublished' -%}
+          <span class="pub-note">{{ publication_note }}</span>
         {%- endif -%}
       </div>
     {%- endif -%}

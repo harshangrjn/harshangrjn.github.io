@@ -82,6 +82,9 @@ Useful optional link fields are `code`, `pdf`, `html`, `poster`, `slides`, and
 pdf = {/pdf/filename.pdf}
 ```
 
+Use `display_note` for context that should appear on the website but not in
+copied BibTeX, such as “Presented at PSCC.”
+
 For a paper under review, use `pubtype = {review}` and a `status` field such as
 `status = {Under review since March 2027}`. Do not include the target journal or
 conference until the paper is accepted.
