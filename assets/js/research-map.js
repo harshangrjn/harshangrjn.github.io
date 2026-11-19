@@ -8,7 +8,7 @@
 
   var NS = "http://www.w3.org/2000/svg";
   var source = document.getElementById("research-map-source");
-  var mapElements = Array.prototype.slice.call(document.querySelectorAll("[data-research-map]"));
+  var mapElements = Array.prototype.slice.call(document.querySelectorAll('[data-research-map="overview"]'));
 
   if (!source || !mapElements.length) return;
 
@@ -23,14 +23,6 @@
   var quantumTerms = /\bquantum\b|\bqubo\b|\bising\b/;
   var networkTerms = /\buav\b|\brobot|\bvehicle|space object|air transportation|manufacturing network|algebraic connectivity|disturbance propagation|string stability|trajectory planning/;
   var optimizationTerms = /\boptimi[sz]|nonconvex|mixed-integer|\bmilp\b|\bminlp\b|relaxation|partitioning|stochastic|robust|chance-constrained|bilevel|branch-and-bound/;
-  var globalTerms = /\bglobal|nonconvex|relaxation|convex hull|multilinear|branch-and-bound|partitioning|bound tightening|polyhedral|piecewise convex|mccormick/;
-  var uncertaintyTerms = /\buncertain|stochastic|chance-constrained|adversarial|\bn-[1k]\b|failure|disruption|geomagnetic|security|robust (optimization|planning|partitioning|operation|renewable|load)/;
-  var learningTerms = /\blearn|machine learning|neural|reinforcement|agentic|\bai\b|semi-markov/;
-  var operationsTerms = /\boperation|planning|dispatch|commitment|switching|optimal power flow|\bacopf\b|\bopf\b|pricing|arbitrage|design|reconfiguration|topology|load delivery|power loss|optimality|relaxation|formulation/;
-  var resilienceTerms = /\bresilien|microgrid|restoration|black start|load delivery|load restoration|disruption|failure|security-constrained|off-grid/;
-  var designTerms = /\bdesign|synthesi|maximi[sz]ing|connectivity|topology|graph|network|configuration|expansion/;
-  var controlTerms = /\bcontrol|stability|disturbance|dynamic|natural frequenc|string stability|propagation/;
-  var autonomyTerms = /\buav\b|\brobot|vehicle|trajectory|space object|air transportation|localization/;
 
   var overviewConfig = {
     width: 720,
@@ -63,29 +55,6 @@
     ],
   };
 
-  var detailConfigs = {
-    optimization: detailConfig([
-      ["global", "Deterministic global optimization", ""],
-      ["uncertainty", "Optimization under uncertainty", "stochastic · robust"],
-      ["learning", "ML-accelerated optimization", ""],
-    ]),
-    power: detailConfig([
-      ["operations", "Operations & planning", ""],
-      ["uncertainty", "Under uncertainty", ""],
-      ["resilience", "Resilience", ""],
-    ]),
-    quantum: detailConfig([
-      ["circuits", "Quantum circuit optimization", ""],
-      ["hybrid", "Hybrid quantum–classical", ""],
-      ["formulations", "QUBO formulations & benchmarks", ""],
-    ]),
-    networks: detailConfig([
-      ["design", "Network design", ""],
-      ["control", "Dynamics & Control", ""],
-      ["autonomy", "Robotics & autonomy", ""],
-    ]),
-  };
-
   var papers = Array.prototype.slice
     .call(source.querySelectorAll(".research-map-entry"))
     .map(function (entry) {
@@ -105,52 +74,16 @@
     });
 
   mapElements.forEach(function (map) {
-    var kind = map.dataset.researchMap;
-    var isOverview = kind === "overview";
-    var config = isOverview ? overviewConfig : detailConfigs[kind];
-    if (!config) return;
-
     var mapped = papers
       .map(function (paper) {
-        var scores = isOverview ? paper.overviewScores : scoreDetail(kind, paper);
-        return { paper: paper, scores: scores };
+        return { paper: paper, scores: paper.overviewScores };
       })
       .filter(function (item) {
         return maxScore(item.scores) > 0;
       });
 
-    drawMap(map, config, mapped, isOverview);
-
-    var count = document.querySelector('[data-map-count="' + kind + '"]');
-    if (count) count.textContent = String(mapped.length);
+    drawMap(map, overviewConfig, mapped);
   });
-
-  setupOverviewFilters();
-
-  function detailConfig(fields) {
-    var positions = [
-      { x: 360, y: 205, lx: 360, ly: 20 },
-      { x: 247, y: 345, lx: 175, ly: 515 },
-      { x: 473, y: 345, lx: 545, ly: 515 },
-    ];
-    return {
-      width: 720,
-      height: 560,
-      radius: 145,
-      dotRadius: 6,
-      fields: fields.map(function (field, index) {
-        return {
-          key: field[0],
-          label: field[1],
-          sublabel: field[2],
-          x: positions[index].x,
-          y: positions[index].y,
-          lx: positions[index].lx,
-          ly: positions[index].ly,
-        };
-      }),
-    };
-  }
 
   function scoreOverview(paper) {
     var scores = { optimization: 0, power: 0, quantum: 0, networks: 0 };
@@ -160,7 +93,7 @@
     };
 
     // "Computational grids" in this scientific-computing paper are numerical
-    // meshes, not electric grids; keep it in the detailed Science thread only.
+    // meshes, not electric grids; keep it out of the overview map.
     if (paper.key === "nagarajan2010enforcing") return scores;
 
     if (has("global")) scores.optimization = 1;
@@ -193,53 +126,7 @@
     return scores;
   }
 
-  function scoreDetail(kind, paper) {
-    var title = paper.title.toLowerCase();
-    var has = function (area) {
-      return paper.areas.indexOf(area) !== -1;
-    };
-    var scores;
-
-    if (kind === "optimization") {
-      scores = { global: 0, uncertainty: 0, learning: 0 };
-      if (has("global")) scores.global = 1;
-      if (has("uncertainty")) scores.uncertainty = 1;
-      if (has("learning")) scores.learning = 1;
-      if (matches(title, globalTerms)) scores.global = Math.max(scores.global, 0.88);
-      if (matches(title, uncertaintyTerms)) scores.uncertainty = Math.max(scores.uncertainty, 0.88);
-      if (matches(title, learningTerms)) scores.learning = Math.max(scores.learning, 0.9);
-      return scores;
-    }
-
-    if (kind === "power") {
-      scores = { operations: 0, uncertainty: 0, resilience: 0 };
-      if (paper.overviewScores.power < 0.5) return scores;
-      if (matches(title, operationsTerms)) scores.operations = 0.92;
-      if (has("uncertainty") || matches(title, uncertaintyTerms)) scores.uncertainty = has("uncertainty") ? 1 : 0.82;
-      if (has("resilience") || matches(title, resilienceTerms)) scores.resilience = has("resilience") ? 1 : 0.84;
-      return scores;
-    }
-
-    if (kind === "quantum") {
-      scores = { circuits: 0, hybrid: 0, formulations: 0 };
-      if (paper.overviewScores.quantum < 0.5) return scores;
-      if (matches(title, /\bcircuit|compil|synthesis/)) scores.circuits = 1;
-      if (matches(title, /\bhybrid|accelerated classical|unit commitment|power systems/)) scores.hybrid = 1;
-      if (matches(title, /\bqubo|ising|integer programming|reformulation|processing unit|hardware|benchmark|quantumcircuitopt/)) scores.formulations = 1;
-      if (maxScore(scores) === 0) scores.formulations = 0.65;
-      return scores;
-    }
-
-    scores = { design: 0, control: 0, autonomy: 0 };
-    if (paper.overviewScores.networks < 0.5) return scores;
-    if (matches(title, designTerms)) scores.design = 0.95;
-    if (matches(title, controlTerms)) scores.control = 0.95;
-    if (matches(title, autonomyTerms)) scores.autonomy = 1;
-    if (maxScore(scores) === 0) scores.design = 0.6;
-    return scores;
-  }
-
-  function drawMap(map, config, mapped, isOverview) {
+  function drawMap(map, config, mapped) {
     var svg = map.querySelector("svg");
     var tooltip = map.querySelector(".research-map-tooltip");
     var fieldLayer = svgEl("g", { class: "research-map-fields" });
@@ -269,11 +156,11 @@
       if (restoreFocus && focusWasInTooltip) previousLink.focus();
     }
 
-    config.fields.forEach(function (field, index) {
-      var color = isOverview ? pillarColors[field.key] : detailColor(map.dataset.researchMap, index);
+    config.fields.forEach(function (field) {
+      var color = pillarColors[field.key];
       var labelX = field.lx;
       var labelY = field.ly;
-      if (isOverview && map.classList.contains("research-map--home")) {
+      if (map.classList.contains("research-map--home")) {
         if (field.key === "quantum") {
           labelX = 618;
           labelY = 525;
@@ -300,19 +187,6 @@
       label.textContent = field.label;
       fieldLayer.appendChild(label);
 
-      if (field.label2) {
-        var label2 = svgEl("text", {
-          class: "research-map-field-label research-map-field-label--" + field.key,
-          x: labelX,
-          y: labelY + 25,
-          "text-anchor": "middle",
-          "data-field": field.key,
-        });
-        label2.style.setProperty("--field-color", color);
-        label2.textContent = field.label2;
-        fieldLayer.appendChild(label2);
-      }
-
       if (field.sublabel) {
         var sublabel = svgEl("text", {
           class: "research-map-field-sublabel research-map-field-sublabel--" + field.key,
@@ -335,24 +209,20 @@
       }
     });
 
-    var points = placePoints(mapped, config, isOverview);
+    var points = placePoints(mapped, config);
 
     points.forEach(function (point) {
-      var dominant =
-        isOverview && point.scores.quantum >= 0.5
-          ? "quantum"
-          : dominantField(point.scores);
+      var dominant = point.scores.quantum >= 0.5 ? "quantum" : dominantField(point.scores);
       var link = svgEl("a", {
         class: "research-map-dot-link",
         href: point.paper.url,
         tabindex: "0",
         "aria-label": "Show details for " + point.paper.title + " (" + point.paper.year + ")",
         "aria-expanded": "false",
-        "data-fields": scoreKeys(point.scores).join(" "),
       });
       var title = svgEl("title");
       title.textContent = point.paper.title + " (" + point.paper.year + ")";
-      var isHomeOverview = isOverview && map.classList.contains("research-map--home");
+      var isHomeOverview = map.classList.contains("research-map--home");
       var hitTarget = svgEl("circle", {
         class: "research-map-dot-hit",
         cx: point.x.toFixed(2),
@@ -365,12 +235,7 @@
         cy: point.y.toFixed(2),
         r: isHomeOverview ? config.dotRadius + 1.1 : config.dotRadius,
       });
-      link.style.setProperty(
-        "--dot-color",
-        isOverview
-          ? pillarColors[dominant]
-          : pillarColors[map.dataset.researchMap]
-      );
+      link.style.setProperty("--dot-color", pillarColors[dominant]);
       link.appendChild(title);
       link.appendChild(hitTarget);
       link.appendChild(dot);
@@ -415,7 +280,7 @@
     });
   }
 
-  function placePoints(mapped, config, isOverview) {
+  function placePoints(mapped, config) {
     var fieldByKey = {};
     config.fields.forEach(function (field) {
       fieldByKey[field.key] = field;
@@ -423,23 +288,11 @@
 
     var points = mapped.map(function (item) {
       var keys = scoreKeys(item.scores);
-      var total = keys.reduce(function (sum, key) {
-        return sum + item.scores[key];
-      }, 0);
-      var base = isOverview ? overviewAnchor(keys, item.scores) : null;
-      var baseX = base
-        ? base.x
-        : keys.reduce(function (sum, key) {
-            return sum + fieldByKey[key].x * item.scores[key];
-          }, 0) / total;
-      var baseY = base
-        ? base.y
-        : keys.reduce(function (sum, key) {
-            return sum + fieldByKey[key].y * item.scores[key];
-          }, 0) / total;
+      var base = overviewAnchor(keys, item.scores);
+      var baseX = base.x;
+      var baseY = base.y;
       var angle = seeded(item.paper.key + "-angle") * Math.PI * 2;
-      var spreadLimit = keys.length > 1 ? 28 : config.dotRadius < 6 ? 36 : 31;
-      if (isOverview) spreadLimit = keys.length > 1 ? 34 : 42;
+      var spreadLimit = keys.length > 1 ? 34 : 42;
       var spread = 8 + seeded(item.paper.key + "-radius") * spreadLimit;
       return {
         paper: item.paper,
@@ -451,7 +304,7 @@
       };
     });
 
-    var minimum = config.dotRadius * 2 + (isOverview ? 10 : 5);
+    var minimum = config.dotRadius * 2 + 10;
     for (var iteration = 0; iteration < 220; iteration++) {
       separatePoints(points, minimum);
       points.forEach(function (point) {
@@ -543,40 +396,13 @@
       var dx = point.x - field.x;
       var dy = point.y - field.y;
       var distance = Math.sqrt(dx * dx + dy * dy) || 0.01;
-      var margin = config.dotRadius + (config === overviewConfig ? 10 : 9);
+      var margin = config.dotRadius + 10;
       if (Math.abs(distance - radius) >= margin) return;
 
       var isMember = point.scores[key] >= 0.5;
       var target = isMember ? radius - margin : radius + margin;
       point.x = field.x + (dx / distance) * target;
       point.y = field.y + (dy / distance) * target;
-    });
-  }
-
-  function setupOverviewFilters() {
-    var map = document.querySelector('[data-research-map="overview"]');
-    if (!map) return;
-    var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-map-filter]"));
-    var active = "";
-
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var requested = button.dataset.mapFilter;
-        active = active === requested ? "" : requested;
-
-        buttons.forEach(function (item) {
-          item.setAttribute("aria-pressed", String(item.dataset.mapFilter === active));
-        });
-        map.classList.toggle("is-filtered", Boolean(active));
-
-        Array.prototype.slice.call(map.querySelectorAll(".research-map-dot-link")).forEach(function (link) {
-          var fields = (link.dataset.fields || "").split(" ");
-          link.classList.toggle("is-match", !active || fields.indexOf(active) !== -1);
-        });
-        Array.prototype.slice.call(map.querySelectorAll("[data-field]")).forEach(function (field) {
-          field.classList.toggle("is-match", !active || field.dataset.field === active);
-        });
-      });
     });
   }
 
@@ -625,16 +451,6 @@
     return Object.keys(scores).reduce(function (max, key) {
       return Math.max(max, scores[key]);
     }, 0);
-  }
-
-  function detailColor(kind, index) {
-    var base = pillarColors[kind] || pillarColors.optimization;
-    var mixes = [
-      base,
-      "color-mix(in srgb, " + base + " 74%, var(--hn-gold))",
-      "color-mix(in srgb, " + base + " 72%, var(--hn-accent))",
-    ];
-    return mixes[Math.max(0, index)] || base;
   }
 
   function cleanTitle(title) {

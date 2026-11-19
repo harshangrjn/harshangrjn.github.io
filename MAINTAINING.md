@@ -67,7 +67,7 @@ Current publication-area IDs are:
 - `global` and `learning`: tracks within Optimization & Machine Learning
 - `uncertainty`: Power Systems Optimization Under Uncertainty
 - `resilience`: Resilient Power Transmission & Distribution Grids
-- `networks`: Networks, Control & Robotics
+- `networks`: Networks & Control
 - `quantum`: Quantum Computing
 - `science`: Optimization & AI for Scientific Computing
 

@@ -88,8 +88,8 @@
   software: [PowerModelsONM.jl]
 
 - id: networks
-  title: Networks, Control & Robotics
-  short: Networks and Control
+  title: "Networks & Control"
+  short: "Networks & Control"
   icon: fa-solid fa-diagram-project
   summary: >
     Spectral graph theory and mixed-integer optimization for robust networks,
