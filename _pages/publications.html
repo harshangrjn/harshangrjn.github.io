@@ -41,13 +41,15 @@ description: Complete publication list of Harsha Nagarajan, searchable and filte
     <button type="button" class="filter-chip" data-filter-type="journal" aria-pressed="false">Journal</button>
     <button type="button" class="filter-chip" data-filter-type="conference" aria-pressed="false">Conference</button>
     <button type="button" class="filter-chip" data-filter-type="review" aria-pressed="false">Under review</button>
-    <button type="button" class="filter-chip" data-filter-type="report" aria-pressed="false">Reports &amp; other</button>  </div>
+    <button type="button" class="filter-chip" data-filter-type="report" aria-pressed="false">Reports &amp; other</button>
+  </div>
 
   <p class="pub-stats" aria-live="polite">
     Showing <span id="pub-count">{% bibliography_count %}</span> of {% bibliography_count %} ·
-    {% bibliography_count --query @article[pubtype=journal] %} journal articles ·
-    {% bibliography_count --query @inproceedings %} conference papers ·
-    {% bibliography_count --query @*[pubtype=review] %} under review
+    <span id="pub-journal-count">{% bibliography_count --query @*[pubtype=journal] %}</span> journal articles ·
+    <span id="pub-conference-count">{% bibliography_count --query @*[pubtype=conference] %}</span> conference papers ·
+    <span id="pub-review-count">{% bibliography_count --query @*[pubtype=review] %}</span> under review ·
+    <span id="pub-report-count">{% bibliography_count --query @*[pubtype=report] %}</span> technical reports
   </p>
 </div>
 

@@ -44,6 +44,12 @@
     var countEl = document.getElementById("pub-count");
     var emptyEl = document.getElementById("pub-empty");
     var resetEl = document.getElementById("pub-reset");
+    var typeCountEls = {
+      journal: document.getElementById("pub-journal-count"),
+      conference: document.getElementById("pub-conference-count"),
+      review: document.getElementById("pub-review-count"),
+      report: document.getElementById("pub-report-count"),
+    };
     var areaChips = Array.prototype.slice.call(document.querySelectorAll("[data-filter-area]"));
     var typeChips = Array.prototype.slice.call(document.querySelectorAll("[data-filter-type]"));
     var areaMembers = {};
@@ -91,6 +97,7 @@
     function apply() {
       var terms = normalize(state.q).split(" ").filter(Boolean);
       var shown = 0;
+      var shownByType = { journal: 0, conference: 0, review: 0, report: 0 };
 
       items.forEach(function (it) {
         var matchesArea =
@@ -105,7 +112,10 @@
             return it.text.indexOf(t) !== -1;
           });
         it.li.classList.toggle("is-filtered-out", !ok);
-        if (ok) shown++;
+        if (ok) {
+          shown++;
+          if (Object.prototype.hasOwnProperty.call(shownByType, it.type)) shownByType[it.type]++;
+        }
       });
 
       headings.forEach(function (h) {
@@ -117,6 +127,9 @@
       });
 
       countEl.textContent = shown;
+      Object.keys(typeCountEls).forEach(function (type) {
+        if (typeCountEls[type]) typeCountEls[type].textContent = shownByType[type];
+      });
       emptyEl.hidden = shown !== 0;
 
       setPressed(areaChips, state.area, "data-filter-area");

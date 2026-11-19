@@ -21,11 +21,14 @@ research_intro: >
 # How many items from _data/updates.yml to show
 updates_limit: 7
 ---
+{%- assign current_graduate_group = site.data.group.current | where: 'heading', 'Graduate Researchers' | first -%}
+{%- assign former_graduate_group = site.data.group.former | where: 'heading', 'Graduate Researchers' | first -%}
+{%- assign graduate_researcher_count = current_graduate_group.people.size | plus: former_graduate_group.people.size -%}
 
 I am a Staff Scientist in the [Applied Mathematics and Plasma Physics group (T-5)](https://www.lanl.gov/engage/organizations/aldsct/theoretical/ampp) of the Theoretical Division at [Los Alamos National Laboratory](https://www.lanl.gov) and a member of the [Advanced Network Science Initiative](https://lanl-ansi.github.io).
 
 My research develops theory, algorithms, and open-source software for large-scale **mixed-integer and nonlinear programming**, including **global optimization** of nonconvex programs, **optimization under uncertainty**, and **learning-accelerated optimization**, with applications in power systems, networks and control, and quantum computing.
 
-I have led and co-led externally funded, multidisciplinary research programs with national laboratories and industry partners, and I have mentored 3 postdoctoral researchers and more than 22 graduate researchers. Before my staff appointment, I was a postdoctoral researcher at the [Center for Nonlinear Studies](https://cnls.lanl.gov) at Los Alamos National Laboratory; more about my background is available [here]({{ '/experience/' | relative_url }}).
+I have led and co-led externally funded, multidisciplinary research programs with national laboratories and industry partners, and I have mentored 3 postdoctoral researchers and {{ graduate_researcher_count }} graduate researchers. Before my staff appointment, I was a postdoctoral researcher at the [Center for Nonlinear Studies](https://cnls.lanl.gov) at Los Alamos National Laboratory; more about my background is available [here]({{ '/experience/' | relative_url }}).
 
 If you would like to work with talented researchers in a collaborative environment, feel free to contact me.

@@ -34,9 +34,9 @@
         Many optimization problems are solved repeatedly as loads, forecasts, and other
         parameters change. This creates data that can be used to learn better search,
         partitioning, and bound-tightening strategies while mathematical optimization
-        retains valid bounds and optimality guarantees. The work includes learning-
-        augmented and reinforcement-learning-guided partitioning, accelerated tightening
-        of AC optimal power flow relaxations, neural approximations for bilevel
+        retains valid bounds and optimality guarantees. The work includes learning-augmented
+        and reinforcement-learning-guided partitioning, accelerated tightening of AC optimal
+        power flow relaxations, neural approximations for bilevel
         adversarial problems, and statistical models of electricity demand. These
         methods are developed alongside open-source optimization software, including
         **Alpine.jl**.
