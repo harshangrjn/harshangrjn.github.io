@@ -12,11 +12,13 @@ roles:
 
 # One-sentence lead-in for the research-area cards
 research_intro: >
-  My research develops mathematical programming formulations and global optimization algorithms
-  for nonconvex programs. Data shape the optimization strategy: abundant, repetitive observations
-  support learning-accelerated methods, while uncertain operating conditions call for stochastic,
-  robust, and adversarial optimization. This methodological core connects applications in power
-  systems, Networks & Control, and quantum computing.
+  My research develops mathematical programming formulations and optimization algorithms for
+  large-scale nonlinear and discrete decision-making problems. Data shape the optimization
+  strategy: parametric problems solved repeatedly with changing inputs generate data that support
+  learning-accelerated methods, while uncertain operating conditions call for stochastic and robust
+  optimization that hedges against them, and for bilevel models when disruptions are strategic.
+  This methodological core connects applications in power systems, networks and control, and
+  quantum computing.
 
 # How many items from _data/updates.yml to show
 updates_limit: 7
