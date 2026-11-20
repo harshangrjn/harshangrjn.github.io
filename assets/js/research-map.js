@@ -32,7 +32,7 @@
     fields: [
       {
         key: "optimization",
-        label: "Optimization & Machine Learning",
+        label: "Optimization & ML",
         x: 360,
         y: 300,
         r: 190,
@@ -47,10 +47,10 @@
         x: 210,
         y: 300,
         r: 165,
-        lx: 125,
+        lx: 123,
         ly: 510,
       },
-      { key: "quantum", label: "Quantum computing", x: 510, y: 300, r: 165, lx: 595, ly: 510 },
+      { key: "quantum", label: "Quantum", x: 510, y: 300, r: 165, lx: 595, ly: 510 },
       { key: "networks", label: "Networks & Control", x: 360, y: 475, r: 115, lx: 360, ly: 625 },
     ],
   };
@@ -132,6 +132,7 @@
     var fieldLayer = svgEl("g", { class: "research-map-fields" });
     var dotLayer = svgEl("g", { class: "research-map-dots" });
     var pinnedLink = null;
+    var fieldCounts = {};
 
     function pinTooltip(link, paper, focusCard) {
       if (pinnedLink && pinnedLink !== link) {
@@ -160,12 +161,6 @@
       var color = pillarColors[field.key];
       var labelX = field.lx;
       var labelY = field.ly;
-      if (map.classList.contains("research-map--home")) {
-        if (field.key === "quantum") {
-          labelX = 618;
-          labelY = 525;
-        }
-      }
       var circle = svgEl("circle", {
         class: "research-map-field research-map-field--" + field.key,
         cx: field.x,
@@ -186,6 +181,12 @@
       label.style.setProperty("--field-color", color);
       label.textContent = field.label;
       fieldLayer.appendChild(label);
+
+      // Paper count shown inline after each overview label, e.g. "Quantum · 6",
+      // in a slightly smaller size so "Power systems · 44" clears the green circle.
+      var fieldCount = svgEl("tspan", { class: "research-map-field-count" });
+      label.appendChild(fieldCount);
+      fieldCounts[field.key] = fieldCount;
 
       if (field.sublabel) {
         var sublabel = svgEl("text", {
@@ -219,6 +220,8 @@
         tabindex: "0",
         "aria-label": "Show details for " + point.paper.title + " (" + point.paper.year + ")",
         "aria-expanded": "false",
+        "data-fields": scoreKeys(point.scores).join(" "),
+        "data-year": point.paper.year,
       });
       var title = svgEl("title");
       title.textContent = point.paper.title + " (" + point.paper.year + ")";
@@ -268,6 +271,11 @@
 
     svg.appendChild(fieldLayer);
     svg.appendChild(dotLayer);
+
+    setupYearSlider(map, points, fieldCounts, function (link) {
+      if (pinnedLink === link) unpinTooltip(false);
+      else if (!pinnedLink) hideTooltip(tooltip);
+    });
 
     tooltip.addEventListener("click", function (event) {
       event.stopPropagation();
@@ -404,6 +412,155 @@
       point.x = field.x + (dx / distance) * target;
       point.y = field.y + (dy / distance) * target;
     });
+  }
+
+  // Year slider: dots keep the positions computed above for the full set of
+  // papers; the slider only hides papers published after the chosen year.
+  function setupYearSlider(map, points, fieldCounts, onHide) {
+    var years = points
+      .map(function (point) {
+        return parseInt(point.paper.year, 10);
+      })
+      .filter(function (year) {
+        return !isNaN(year);
+      });
+    if (!years.length) return;
+
+    var minYear = Math.min.apply(null, years);
+    var maxYear = Math.max(new Date().getFullYear(), Math.max.apply(null, years));
+    var links = Array.prototype.slice.call(map.querySelectorAll(".research-map-dot-link"));
+    var mapId = (map.querySelector(".research-map-svg title") || {}).id || "research-map";
+    var inputId = mapId.replace(/-title$/, "") + "-year";
+
+    var control = document.createElement("div");
+    control.className = "research-map-years";
+    var label = document.createElement("label");
+    label.className = "research-map-years__label";
+    label.setAttribute("for", inputId);
+    label.textContent = "Publications";
+    var input = document.createElement("input");
+    input.type = "range";
+    input.id = inputId;
+    input.className = "research-map-years__input";
+    input.min = String(minYear);
+    input.max = String(maxYear);
+    input.step = "1";
+    input.value = String(maxYear);
+    var output = document.createElement("output");
+    output.className = "research-map-years__output";
+    output.setAttribute("for", inputId);
+    output.setAttribute("aria-live", "polite");
+    control.append(label, input, output);
+    map.insertAdjacentElement("afterend", control);
+
+    function update() {
+      var through = parseInt(input.value, 10);
+      var counts = {};
+      Object.keys(fieldCounts).forEach(function (key) {
+        counts[key] = 0;
+      });
+
+      points.forEach(function (point, index) {
+        var link = links[index];
+        var year = parseInt(point.paper.year, 10);
+        var hidden = !isNaN(year) && year > through;
+        if (hidden && !link.classList.contains("is-year-hidden")) onHide(link);
+        link.classList.toggle("is-year-hidden", hidden);
+        link.setAttribute("tabindex", hidden ? "-1" : "0");
+        if (hidden) link.setAttribute("aria-hidden", "true");
+        else link.removeAttribute("aria-hidden");
+        if (hidden) return;
+        Object.keys(counts).forEach(function (key) {
+          if (point.scores[key] < 0.5) return;
+          // Optimization & ML counts only papers outside every application circle.
+          var inApplication = Object.keys(point.scores).some(function (other) {
+            return other !== "optimization" && point.scores[other] >= 0.5;
+          });
+          if (key === "optimization" && inApplication) return;
+          counts[key] += 1;
+        });
+      });
+
+      Object.keys(fieldCounts).forEach(function (key) {
+        fieldCounts[key].textContent = "\u2009·\u2009" + counts[key];
+      });
+      var text = "Through " + through;
+      output.textContent = text;
+      input.setAttribute("aria-valuetext", text);
+    }
+
+    // Year hint: hovering shows the exact year under the pointer, and clicking
+    // or dragging selects that same year, so what you see is what you get.
+    var hint = document.createElement("span");
+    hint.className = "research-map-years__hint";
+    hint.setAttribute("aria-hidden", "true");
+    hint.hidden = true;
+    control.appendChild(hint);
+    var thumbInset = 8;
+    var dragging = false;
+    var dragYear = null;
+
+    function yearAt(clientX) {
+      var rect = input.getBoundingClientRect();
+      var ratio = (clientX - rect.left - thumbInset) / Math.max(1, rect.width - 2 * thumbInset);
+      ratio = Math.min(1, Math.max(0, ratio));
+      return minYear + Math.round(ratio * (maxYear - minYear));
+    }
+
+    function showHint(year) {
+      var rect = input.getBoundingClientRect();
+      var box = control.getBoundingClientRect();
+      var ratio = (year - minYear) / Math.max(1, maxYear - minYear);
+      hint.textContent = String(year);
+      hint.style.left = rect.left - box.left + thumbInset + ratio * (rect.width - 2 * thumbInset) + "px";
+      hint.style.top = rect.top - box.top + "px";
+      hint.hidden = false;
+    }
+
+    function selectYear(year) {
+      dragYear = year;
+      if (input.value !== String(year)) {
+        input.value = String(year);
+        update();
+      }
+    }
+
+    input.addEventListener("pointermove", function (event) {
+      var year = yearAt(event.clientX);
+      showHint(year);
+      if (dragging) selectYear(year);
+    });
+    input.addEventListener("pointerdown", function (event) {
+      if (event.button !== 0) return;
+      event.preventDefault();
+      dragging = true;
+      input.setPointerCapture(event.pointerId);
+      input.focus();
+      var year = yearAt(event.clientX);
+      selectYear(year);
+      showHint(year);
+    });
+    function endDrag(event) {
+      dragging = false;
+      dragYear = null;
+      var rect = input.getBoundingClientRect();
+      var inside =
+        event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+      if (event.pointerType !== "mouse" || !inside) hint.hidden = true;
+    }
+    input.addEventListener("pointerup", endDrag);
+    input.addEventListener("pointercancel", endDrag);
+    input.addEventListener("pointerleave", function () {
+      if (!dragging) hint.hidden = true;
+    });
+
+    input.addEventListener("input", function () {
+      // Keep the pointer-selected year if the browser's own drag disagrees.
+      if (dragging && dragYear !== null) input.value = String(dragYear);
+      else hint.hidden = true;
+      update();
+    });
+    update();
   }
 
   function showTooltip(map, tooltip, link, paper, isPinned) {

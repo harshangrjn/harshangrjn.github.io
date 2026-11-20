@@ -195,3 +195,82 @@ html[data-theme="dark"] .research-map {
     display: none !important;
   }
 }
+
+/* Year slider and per-field counts on the overview Venn */
+.research-map-field-count {
+  font-size: 0.8em;
+  font-weight: 500;
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+
+.research-map-dot-link.is-year-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.research-map-years {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(100%, 26rem);
+  margin: 1.9rem auto 0;
+  font-family: var(--hn-mono);
+  font-size: 0.78rem;
+  color: var(--hn-muted);
+}
+
+.research-map-years__label {
+  flex: none;
+  margin: 0;
+}
+
+.research-map-years__input {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--hn-accent);
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.research-map-years__hint {
+  position: absolute;
+  z-index: 2;
+  padding: 0.1rem 0.4rem;
+  color: var(--hn-text);
+  background: var(--hn-surface);
+  border: 1px solid var(--hn-border-strong);
+  border-radius: 4px;
+  font-family: var(--hn-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 6px));
+}
+
+.research-map-years__output {
+  flex: none;
+  min-width: 6.5rem;
+  color: var(--hn-text);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 575.98px) {
+  .research-map-years {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 0.4rem;
+  }
+
+  .research-map-years__output {
+    min-width: 0;
+    text-align: right;
+  }
+
+  .research-map-years__input {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
